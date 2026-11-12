@@ -5,24 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Jasperson's Detailing | Mobile Truck &amp; Car Detailing in Phoenix, AZ</title>
 <meta name="description" content="Mobile detailing in Phoenix. Lifted trucks, daily drivers and show rigs detailed in your driveway with spot-free water. Weekly plans or one-time details. Call or text 602-616-0058.">
-<meta name="theme-color" content="#0b0b0c">
+<meta name="theme-color" content="#0a0a0b">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,100,400..800&family=JetBrains+Mono:wght@500;700&family=Knewave&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=4">
+<link rel="stylesheet" href="assets/site.css?v=6">
 <link rel="icon" href="assets/brand/logo-1080.jpg">
+<link rel="preload" as="image" href="assets/brand/logo-full.png">
+<script>try{if(sessionStorage.getItem('jd-intro'))document.documentElement.classList.add('no-intro')}catch(e){}</script>
 </head>
 <body>
+
+<!-- ================================================================ INTRO -->
+<div class="intro" aria-hidden="true">
+  <div class="intro__logo">
+    <img src="assets/brand/logo-full.png" alt="" width="1025" height="478">
+    <span class="intro__glint"></span>
+  </div>
+  <span class="intro__bar"></span>
+</div>
 
 <!-- ================================================================ NAV -->
 <header class="nav" id="top">
   <a class="logo" href="#top" aria-label="Jasperson's Detailing, home"><img src="assets/brand/logo-wordmark.png" alt="Jasperson's Detailing" width="1025" height="391"></a>
   <nav class="nav__links" aria-label="Main">
     <a href="#services">Services</a>
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
     <a href="#process">Process</a>
-    <a href="#rigs">The rigs</a>
-    <a href="#work">Work</a>
+    <a href="#social">Social</a>
   </nav>
   <a class="nav__phone" href="tel:+16026160058">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3h3l1.5 4.4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2L21 14.4v3A2.6 2.6 0 0 1 18.4 20 15.4 15.4 0 0 1 4 5.6 2.6 2.6 0 0 1 6.6 3z"/></svg>
@@ -32,7 +44,7 @@
 </header>
 
 <!-- ================================================================ HERO -->
-<section class="hero" aria-label="Finished work by Jasperson's Detailing">
+<section class="hero" aria-label="Jasperson's Detailing">
   <div class="hero__reels" aria-hidden="true">
     <video class="hero__col" src="assets/v/hero-a.mp4" poster="assets/img/hero-a.jpg" muted playsinline autoplay loop preload="auto"></video>
     <video class="hero__col" src="assets/v/hero-b.mp4" poster="assets/img/hero-b.jpg" muted playsinline autoplay loop preload="auto"></video>
@@ -43,33 +55,40 @@
 
   <div class="hero__grid">
     <div class="hero__copy">
-      <p class="eyebrow">Mobile detailing in Phoenix, Arizona</p>
-      <h1 class="hero__h1"><span class="chrome">Hitting the spots</span> <span class="tag">nobody else will.</span></h1>
-      <p class="hero__lede">Lifted trucks, daily drivers and show rigs, detailed in your driveway. Weekly plans or one-time details. The van brings its own spot-free water and power.</p>
+      <div class="neon" role="img" aria-label="Jasperson's Detailing neon sign">
+        <span class="neon__glow"></span>
+        <span class="neon__tube"></span>
+      </div>
+      <h1 class="hero__h1">Hitting the spots <span class="tag">nobody else will.</span></h1>
+      <p class="hero__lede">Mobile detailing for Phoenix trucks, daily drivers and show rigs. We bring the water, the power and the same process to your driveway, every time.</p>
       <div class="hero__proof">
         <a href="https://www.tiktok.com/@jaspersonsdetailing" target="_blank" rel="noopener"><b>845</b> details on TikTok</a>
-        <a href="https://www.instagram.com/jaspersonsdetailing/" target="_blank" rel="noopener"><b>4,866</b> following on Instagram</a>
+        <a href="https://www.instagram.com/jaspersonsdetailing/" target="_blank" rel="noopener"><b>4,866</b> on Instagram</a>
       </div>
     </div>
 
     <!-- booking card -->
     <div class="book" id="book">
+      <div class="book__head">
+        <span class="book__tex" aria-hidden="true"></span>
+        <p class="book__title">Get on the schedule</p>
+        <p class="book__sub">We text back to lock in your day.</p>
+      </div>
       <form class="book__form" novalidate>
         <div class="book__body">
-          <p class="book__title">Get on the schedule</p>
-
           <fieldset class="bq">
-            <legend>What are you looking for?</legend>
-            <div class="seg" role="radiogroup">
-              <label><input type="radio" name="mode" value="plan" checked><span><b>Recurring wash</b><i>Weekly, every 2 weeks or monthly</i></span></label>
-              <label><input type="radio" name="mode" value="once"><span><b>One-time detail</b><i>Wash, interior, full or ceramic</i></span></label>
+            <legend><span>01</span>What do you need?</legend>
+            <div class="switch" role="radiogroup">
+              <label><input type="radio" name="mode" value="plan" checked><span>Recurring wash</span></label>
+              <label><input type="radio" name="mode" value="once"><span>One-time detail</span></label>
+              <i class="switch__pill" aria-hidden="true"></i>
             </div>
-            <div class="chips" data-for="plan" role="radiogroup" aria-label="How often">
+            <div class="opts" data-for="plan" role="radiogroup" aria-label="How often">
               <label><input type="radio" name="plan" value="weekly"><span>Weekly</span></label>
               <label><input type="radio" name="plan" value="biweekly" checked><span>Every 2 weeks</span></label>
               <label><input type="radio" name="plan" value="monthly"><span>Monthly</span></label>
             </div>
-            <div class="chips" data-for="once" role="radiogroup" aria-label="Which detail" hidden>
+            <div class="opts" data-for="once" role="radiogroup" aria-label="Which detail" hidden>
               <label><input type="radio" name="pkg" value="wash"><span>Signature Wash</span></label>
               <label><input type="radio" name="pkg" value="interior"><span>Interior Reset</span></label>
               <label><input type="radio" name="pkg" value="full" checked><span>Full Detail</span></label>
@@ -78,35 +97,35 @@
           </fieldset>
 
           <fieldset class="bq">
-            <legend>What are you driving?</legend>
-            <div class="vgrid" role="radiogroup" aria-label="Vehicle">
-              <label class="vopt"><input type="radio" name="size" value="car"><span class="vopt__ico" data-ico="car"></span><span>Car</span></label>
-              <label class="vopt"><input type="radio" name="size" value="suv"><span class="vopt__ico" data-ico="suv"></span><span>SUV / half-ton</span></label>
-              <label class="vopt"><input type="radio" name="size" value="hd"><span class="vopt__ico" data-ico="hd"></span><span>HD truck</span></label>
-              <label class="vopt"><input type="radio" name="size" value="rig"><span class="vopt__ico" data-ico="rig"></span><span>Lifted / dually</span></label>
+            <legend><span>02</span>What are you driving?</legend>
+            <div class="veh" role="radiogroup" aria-label="Vehicle">
+              <label><input type="radio" name="size" value="car"><img src="assets/img/veh-car.jpg" alt="" width="360" height="360"><span>Car</span></label>
+              <label><input type="radio" name="size" value="suv"><img src="assets/img/veh-suv.jpg" alt="" width="360" height="360"><span>SUV / half-ton</span></label>
+              <label><input type="radio" name="size" value="hd"><img src="assets/img/veh-hd.jpg" alt="" width="360" height="360"><span>HD truck</span></label>
+              <label><input type="radio" name="size" value="rig"><img src="assets/img/veh-rig.jpg" alt="" width="360" height="360"><span>Lifted / dually</span></label>
             </div>
           </fieldset>
 
           <fieldset class="bq">
-            <legend>How do we reach you?</legend>
+            <legend><span>03</span>Where do we send it?</legend>
             <div class="fld2">
-              <label class="fld"><span>Name</span><input name="name" autocomplete="name" required></label>
-              <label class="fld"><span>Mobile</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
+              <label class="fld"><input name="name" autocomplete="name" placeholder=" " required><span>Name</span></label>
+              <label class="fld"><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " required><span>Mobile</span></label>
             </div>
-            <label class="fld"><span>Where's the vehicle? <i>ZIP or cross streets</i></span><input name="addr" autocomplete="postal-code" required></label>
+            <label class="fld"><input name="addr" autocomplete="postal-code" placeholder=" " required><span>ZIP or cross streets</span></label>
           </fieldset>
         </div>
 
         <div class="book__foot">
-          <div class="book__est"><span class="book__estk">Pick a vehicle for pricing</span><span class="book__estv">&nbsp;</span></div>
-          <button type="submit" class="btn btn--red book__go">Request my spot</button>
+          <div class="book__est"><span class="book__estk">Every 2 weeks</span><span class="book__estv">From $75</span></div>
+          <button type="submit" class="btn btn--red book__go">Request my spot <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
         </div>
 
         <div class="bdone" tabindex="-1" hidden>
           <p class="bdone__k">Request ready</p>
           <p class="bdone__h">You're on the list.</p>
           <dl class="bdone__sum"></dl>
-          <p class="bdone__note">Jasperson texts back to lock in your day and window.</p>
+          <p class="bdone__note">We text back to lock in your day and arrival window.</p>
           <a class="btn btn--red btn--block" href="sms:+16026160058" data-sms-summary>Send it by text</a>
           <button type="button" class="book__link" data-restart>Start over</button>
         </div>
@@ -115,74 +134,173 @@
   </div>
 </section>
 
-<!-- ================================================================ SERVICES -->
+<!-- ================================================================ SERVICES (cards) -->
 <section class="svc" id="services">
   <div class="wrap">
-    <div class="svc__head">
+    <div class="sec-head">
       <div>
-        <p class="eyebrow eyebrow--dark">Services &amp; pricing</p>
-        <h2 class="h2">Know exactly <span class="tag tag--red">what you get.</span></h2>
+        <p class="eyebrow">Services</p>
+        <h2 class="h2 h2--light">What we <span class="tag">do.</span></h2>
       </div>
-      <p class="svc__lede">Every step, how long he'll be in your driveway, and what it costs for your vehicle. No mystery tiers.</p>
+      <p class="sec-head__lede">Inside, outside, protection, and plans that keep it that way. Every service happens in your driveway.</p>
     </div>
-
-    <div class="svc__bar">
-      <div class="mode" role="tablist" aria-label="Service type">
-        <button type="button" role="tab" data-mode="once" aria-selected="true">One-time details</button>
-        <button type="button" role="tab" data-mode="plan" aria-selected="false">Maintenance plans</button>
-      </div>
-      <div class="sizer" role="radiogroup" aria-label="Vehicle size for pricing">
-        <button type="button" role="radio" data-size="car">Car</button>
-        <button type="button" role="radio" data-size="suv">SUV / half-ton</button>
-        <button type="button" role="radio" data-size="hd">HD truck</button>
-        <button type="button" role="radio" data-size="rig">Lifted / dually</button>
-      </div>
+    <div class="scards">
+      <article class="scard scard--lg">
+        <img src="assets/img/svc-full.jpg" alt="Black and tan King Ranch F-250 after a full detail" loading="lazy" width="600" height="800">
+        <div class="scard__body">
+          <h3>Full Detail</h3>
+          <p>Every exterior and interior step, plus a real paint sealant. The complete reset.</p>
+          <p class="scard__meta"><span>From <b>$249</b></span><span>4–6 hrs</span></p>
+          <button type="button" class="scard__go" data-show="once:full">See what's included</button>
+        </div>
+      </article>
+      <article class="scard">
+        <img src="assets/img/svc-wash.jpg" alt="Snow-foam prewash going onto a truck" loading="lazy" width="600" height="800">
+        <div class="scard__body">
+          <h3>Signature Wash</h3>
+          <p>Wheels, foam, hand wash, spot-free rinse, ceramic topper, quick interior.</p>
+          <p class="scard__meta"><span>From <b>$85</b></span><span>1.5–2 hrs</span></p>
+          <button type="button" class="scard__go" data-show="once:wash">See what's included</button>
+        </div>
+      </article>
+      <article class="scard">
+        <img src="assets/img/svc-interior.jpg" alt="Clean truck interior with custom steering wheel and leather seats" loading="lazy" width="600" height="800">
+        <div class="scard__body">
+          <h3>Interior Reset</h3>
+          <p>Shampoo, extraction, leather, plastics, vents and odor. Back to day one.</p>
+          <p class="scard__meta"><span>From <b>$159</b></span><span>2.5–3.5 hrs</span></p>
+          <button type="button" class="scard__go" data-show="once:interior">See what's included</button>
+        </div>
+      </article>
+      <article class="scard">
+        <img src="assets/img/svc-ceramic.jpg" alt="Water beading on a black hood" loading="lazy" width="600" height="800">
+        <div class="scard__body">
+          <h3>Ceramic Coating</h3>
+          <p>Decon, machine polish, then a hard ceramic layer on paint, wheels and glass.</p>
+          <p class="scard__meta"><span>From <b>$899</b></span><span>1–2 days</span></p>
+          <button type="button" class="scard__go" data-show="once:ceramic">See what's included</button>
+        </div>
+      </article>
+      <article class="scard">
+        <img src="assets/img/feed-DfVsCzhvzly.jpg" alt="Red Ford F-250 Platinum, freshly washed" loading="lazy" width="432" height="768">
+        <div class="scard__body">
+          <h3>Maintenance Plans</h3>
+          <p>Weekly, every 2 weeks or monthly. Same day, same window, full process.</p>
+          <p class="scard__meta"><span>From <b>$69</b>/visit</span></p>
+          <button type="button" class="scard__go" data-show="plan:biweekly">See the plans</button>
+        </div>
+      </article>
+      <article class="scard scard--alt">
+        <img src="assets/img/van-side.jpg" alt="Side of the Jasperson's Detailing van listing RVs, boats, automotive and fleets" loading="lazy" width="720" height="1280">
+        <div class="scard__body">
+          <h3>RVs, Boats &amp; Fleets</h3>
+          <p>Work trucks, company fleets, boats and RVs. Priced by size and schedule.</p>
+          <p class="scard__meta"><span>Custom quote</span></p>
+          <a class="scard__go" href="sms:+16026160058" data-sms="Hey Jasperson's, looking for a quote on an RV/boat/fleet.">Text for a quote</a>
+        </div>
+      </article>
     </div>
-
-    <div class="pcards" role="radiogroup" aria-label="Packages"></div>
-
-    <div class="pdetail">
-      <div class="pdetail__list"></div>
-      <aside class="pdetail__sum"></aside>
-    </div>
-
-    <div class="addons">
-      <p class="addons__k">Add to any detail</p>
-      <div class="addons__list"></div>
-    </div>
-    <p class="svc__fine">Demo pricing shown for layout. Final pricing set by Jasperson's.</p>
   </div>
 </section>
 
-<!-- ================================================================ PROCESS -->
-<section class="proc" id="process">
-  <div class="wrap proc__grid">
-    <div class="proc__stick">
-      <div class="phone">
-        <video class="phone__v" muted playsinline loop autoplay preload="metadata" poster="assets/img/step-wheels.jpg" src="assets/v/step-wheels.mp4"></video>
-        <span class="phone__n">01</span>
+<!-- ================================================================ HOW IT WORKS -->
+<section class="how" id="how">
+  <span class="how__tex" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow eyebrow--onred">How it works</p>
+        <h2 class="h2 h2--light">Booked in a minute. <span class="tag tag--ink">Done in your driveway.</span></h2>
       </div>
     </div>
-    <div class="proc__body">
-      <p class="eyebrow">Same process, every time</p>
-      <h2 class="h2 h2--light">Eight steps. <span class="tag">No shortcuts.</span></h2>
-      <blockquote class="proc__q">
-        <p>“The point of being a detailer is actually hitting the spots maybe no one will ever see.”</p>
-        <cite>Jasperson</cite>
-      </blockquote>
+    <ol class="how__steps">
+      <li><span class="how__n">1</span><img src="assets/img/owner-foam.jpg" alt="" loading="lazy" width="720" height="720"><h3>Reach out</h3><p>Fill out the form, call or text 602-616-0058.</p></li>
+      <li><span class="how__n">2</span><img src="assets/img/svc-wash.jpg" alt="" loading="lazy" width="600" height="800"><h3>Pick your service</h3><p>A one-time detail or a recurring plan, priced for your vehicle.</p></li>
+      <li><span class="how__n">3</span><img src="assets/img/fleet.jpg" alt="" loading="lazy" width="720" height="1280"><h3>Lock in a day</h3><p>We text back with an open day and arrival window that works for you.</p></li>
+      <li><span class="how__n">4</span><img src="assets/img/rig-front.jpg" alt="" loading="lazy" width="720" height="1280"><h3>We pull up</h3><p>Water, power and every tool on board. You don't need a hose or an outlet.</p></li>
+      <li><span class="how__n">5</span><img src="assets/img/reveal.jpg" alt="" loading="lazy" width="720" height="1280"><h3>Walk the finish</h3><p>Look it over with us before we roll out.</p></li>
+    </ol>
+  </div>
+</section>
 
-      <ol class="steps">
-        <li class="step" data-v="wheels"><span class="step__n">01</span><h3>Wheels, barrels &amp; tires first</h3><p>Brake dust gets broken down and brushed out of the barrel and the back of the spokes, not just wiped off the face.</p><span class="chip">Cool Guy by Shine Supply</span></li>
-        <li class="step" data-v="frame"><span class="step__n">02</span><h3>Wells, frame &amp; suspension</h3><p>On a lifted truck, everything behind the wheel is on display. Liners, coilovers and frame rails get degreased like they're paint.</p><span class="chip">Gyeon APC</span></li>
-        <li class="step" data-v="foam"><span class="step__n">03</span><h3>Snow-foam prewash</h3><p>Thick foam sits and lifts the grit before a mitt ever touches the paint. Less dirt dragged around means fewer swirls.</p><span class="chip">KCx Gs</span></li>
-        <li class="step" data-v="contact"><span class="step__n">04</span><h3>Hand contact wash</h3><p>Panel by panel with clean microfiber and a slick wash so the mitt glides instead of grabbing.</p><span class="chip">Shift by Shine Supply</span></li>
-        <li class="step" data-v="rinse"><span class="step__n">05</span><h3>Spot-free rinse</h3><p>The rinse comes from the van's own deionized tank instead of the hose, so it dries clean in full sun.</p><span class="chip">Deionized water</span></li>
-        <li class="step" data-v="dry"><span class="step__n">06</span><h3>Blow-dry, then towel</h3><p>Air pushes water out of mirrors, badges, grilles and lug nuts so nothing drips later. Plush towels finish the flat panels.</p><span class="chip">Metrovac Air Force + The Rag Company</span></li>
-        <li class="step" data-v="glass"><span class="step__n">07</span><h3>Glass &amp; ceramic topper</h3><p>Streak-free glass and a ceramic spray sealant on the paint for gloss that sheds the next dust storm.</p><span class="chip">Tech's Choice ceramic spray</span></li>
-        <li class="step" data-v="dress"><span class="step__n">08</span><h3>Tires dressed right</h3><p>A rich, even finish that doesn't sling down the side of your truck on the first drive.</p><span class="chip">Decked Out by Shine Supply</span></li>
-      </ol>
+<!-- ================================================================ PRICING TICKET -->
+<section class="price" id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow eyebrow--dark">Pricing</p>
+        <h2 class="h2">Know exactly <span class="tag tag--red">what you get.</span></h2>
+      </div>
+      <p class="sec-head__lede sec-head__lede--dark">Pick a service and your vehicle. The ticket shows every step and the price before we ever pull up.</p>
+    </div>
+
+    <div class="price__grid">
+      <div class="price__pick">
+        <div class="mode" role="tablist" aria-label="Service type">
+          <button type="button" role="tab" data-mode="once" aria-selected="true">One-time</button>
+          <button type="button" role="tab" data-mode="plan" aria-selected="false">Plans</button>
+        </div>
+        <div class="plist" role="radiogroup" aria-label="Service"></div>
+        <p class="price__k">Vehicle</p>
+        <div class="sizer" role="radiogroup" aria-label="Vehicle size">
+          <button type="button" role="radio" data-size="car" aria-checked="true">Car</button>
+          <button type="button" role="radio" data-size="suv">SUV / half-ton</button>
+          <button type="button" role="radio" data-size="hd">HD truck</button>
+          <button type="button" role="radio" data-size="rig">Lifted / dually</button>
+        </div>
+      </div>
+
+      <div class="ticket" aria-live="polite">
+        <span class="ticket__stamp" aria-hidden="true"></span>
+        <div class="ticket__top">
+          <img src="assets/brand/logo-wordmark.png" alt="" width="1025" height="391" class="ticket__logo">
+          <div class="ticket__no"><span>Work ticket</span><b class="t-no">JD-0001</b></div>
+        </div>
+        <div class="ticket__title">
+          <p class="t-name">Full Detail</p>
+          <p class="t-for">Car</p>
+        </div>
+        <div class="ticket__lines"></div>
+        <div class="ticket__adds">
+          <p class="ticket__h">Add-ons</p>
+          <div class="adds"></div>
+        </div>
+        <div class="ticket__total">
+          <div><span>Time on site</span><b class="t-time">4–6 hrs</b></div>
+          <div><span>Total</span><b class="t-total">$249</b></div>
+        </div>
+        <button type="button" class="btn btn--red btn--block t-book">Book this detail</button>
+        <p class="ticket__fine">Demo pricing shown for layout. Final pricing set by Jasperson's.</p>
+      </div>
     </div>
   </div>
+</section>
+
+<!-- ================================================================ PROCESS (pinned stage) -->
+<section class="proc" id="process">
+  <div class="proc__stage">
+    <video class="proc__amb" muted playsinline loop autoplay preload="none" aria-hidden="true"></video>
+    <div class="proc__shade" aria-hidden="true"></div>
+    <div class="proc__inner">
+      <div class="proc__left">
+        <p class="eyebrow">Same process, every time</p>
+        <h2 class="h2 h2--light">Eight steps. <span class="tag">No shortcuts.</span></h2>
+        <div class="proc__now">
+          <span class="proc__num">01</span>
+          <h3 class="proc__title">Wheels, barrels &amp; tires first</h3>
+          <p class="proc__body">Brake dust gets broken down and brushed out of the barrel and the back of the spokes, not just wiped off the face.</p>
+          <p class="proc__prod"><span>Used</span><b>Cool Guy by Shine Supply</b></p>
+        </div>
+      </div>
+      <div class="proc__phone">
+        <video class="proc__vid" muted playsinline loop autoplay preload="metadata" poster="assets/img/step-wheels.jpg" src="assets/v/step-wheels.mp4"></video>
+        <span class="proc__ring" aria-hidden="true"><i></i></span>
+      </div>
+      <ol class="proc__ladder" aria-label="Steps"></ol>
+    </div>
+  </div>
+  <!-- mobile: swipeable cards (built from the same data) -->
+  <div class="proc__cards" aria-hidden="true"></div>
 </section>
 
 <!-- ================================================================ SPOT-FREE WATER -->
@@ -190,20 +308,21 @@
   <div class="wrap water__grid">
     <figure class="water__vid">
       <video muted playsinline loop autoplay preload="none" poster="assets/img/step-rinse.jpg" data-src="assets/v/step-rinse.mp4"></video>
-      <figcaption>His own test: a black Escalade, rinsed and left wet in 102° sun.</figcaption>
+      <figcaption>Our test: a black Escalade, rinsed and left wet in 102° sun.</figcaption>
     </figure>
     <div class="water__copy">
       <p class="eyebrow">Why your truck dries clean</p>
       <h2 class="h2 h2--light">Spot-free water, <span class="tag">every wash.</span></h2>
-      <p class="water__lede">Phoenix tap water is hard. Rinse dark paint with it in the sun and the minerals dry into spots that can etch the clear coat.</p>
-      <div class="water__pair">
-        <div>
-          <p class="water__k">The hose</p>
+      <p class="water__lede">Phoenix tap water is hard. Rinse dark paint with it in the sun and the minerals dry into spots that can etch the clear coat. So we don't use it.</p>
+      <div class="water__vs">
+        <div class="water__side">
+          <p class="water__k">Your hose</p>
           <p>Hard Phoenix tap water. Spots in minutes on black paint.</p>
         </div>
-        <div class="water__us">
-          <p class="water__k">The van</p>
-          <p>Deionized water from its own tank. Dries spot-free, even at noon in July.</p>
+        <span class="water__x">vs</span>
+        <div class="water__side water__side--us">
+          <p class="water__k">Our van</p>
+          <p>Deionized water from our own tank. Dries spot-free, even at noon in July.</p>
         </div>
       </div>
     </div>
@@ -213,65 +332,47 @@
 <!-- ================================================================ RIGS -->
 <section class="rigs" id="rigs">
   <div class="wrap">
-    <div class="rigs__head">
-      <p class="eyebrow eyebrow--dark">The rigs</p>
-      <h2 class="h2">You'll know <span class="tag tag--red">when he pulls up.</span></h2>
-      <p class="rigs__lede">The red-and-black van, the red F-250 Platinum and the logo trailer behind it are all over his feed. Here's what shows up at your house.</p>
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow eyebrow--dark">The rigs</p>
+        <h2 class="h2">You'll know <span class="tag tag--red">when we pull up.</span></h2>
+      </div>
+      <p class="sec-head__lede sec-head__lede--dark">Look for the red-and-black van or the F-250 with the logo trailer.</p>
     </div>
-
-    <div class="rigs__mosaic">
-      <figure class="rm rm--trailer">
-        <img src="assets/img/trailer.jpg" alt="White enclosed trailer wrapped with the Jasperson's Detailing graffiti logo and phone number" loading="lazy" width="720" height="1280">
-        <figcaption><b>The trailer</b>Enclosed, wrapped in the logo and the number.</figcaption>
-      </figure>
-      <figure class="rm rm--tow">
-        <video muted playsinline loop autoplay preload="none" poster="assets/img/rig-tow.jpg" data-src="assets/v/rig-tow.mp4"></video>
-        <figcaption><b>The tow rig</b>His own F-250 Platinum. The same truck that shows up on his page.</figcaption>
-      </figure>
-      <figure class="rm rm--van">
-        <img src="assets/img/van-rear.jpg" alt="Jasperson's Detailing van with red and black splatter wrap and graffiti logo on the rear doors" loading="lazy" width="720" height="1280">
-        <figcaption><b>The van</b>2018 Transit Connect in the red-and-black splatter wrap.</figcaption>
-      </figure>
-      <figure class="rm rm--inside">
-        <video muted playsinline loop autoplay preload="none" poster="assets/img/step-van.jpg" data-src="assets/v/step-van.mp4"></video>
-        <figcaption><b>What's inside</b>Water tank, generator, pressure washer, hose reels and a rolling tool chest.</figcaption>
-      </figure>
-      <figure class="rm rm--fleet">
-        <img src="assets/img/fleet.jpg" alt="Red Ford F-250 Platinum parked next to the white and red Jasperson's Detailing van" loading="lazy" width="720" height="1280">
-        <figcaption><b>Both rigs</b>The F-250 and the van, parked together.</figcaption>
-      </figure>
+    <div class="rigs__row">
+      <figure class="rig rig--wide"><img src="assets/img/rig-front.jpg" alt="Red Ford F-250 Platinum towing the Jasperson's Detailing enclosed trailer" loading="lazy" width="720" height="1280"><figcaption>F-250 Platinum + trailer</figcaption></figure>
+      <figure class="rig"><img src="assets/img/van-rear.jpg" alt="Jasperson's Detailing van with red and black splatter wrap" loading="lazy" width="720" height="1280"><figcaption>The van</figcaption></figure>
+      <figure class="rig"><img src="assets/img/trailer.jpg" alt="Enclosed trailer wrapped with the Jasperson's Detailing logo and phone number" loading="lazy" width="720" height="1280"><figcaption>The trailer</figcaption></figure>
     </div>
   </div>
 </section>
 
-<!-- ================================================================ WORK / SOCIAL -->
-<section class="work" id="work">
+<!-- ================================================================ SOCIAL -->
+<section class="social" id="social">
   <div class="wrap">
-    <div class="work__head">
+    <div class="sec-head">
       <div>
-        <p class="eyebrow">Watch the work</p>
+        <p class="eyebrow">Social</p>
         <h2 class="h2 h2--light">New truck <span class="tag">every day.</span></h2>
       </div>
-      <div class="work__follow">
-        <a class="btn btn--red" href="https://www.tiktok.com/@jaspersonsdetailing" target="_blank" rel="noopener">TikTok</a>
-        <a class="btn btn--ghost" href="https://www.instagram.com/jaspersonsdetailing/" target="_blank" rel="noopener">Instagram</a>
-      </div>
+      <p class="sec-head__lede">Every detail we do ends up on the feed. Tap any post to watch it.</p>
     </div>
 
-    <div class="work__grid">
-      <figure class="reel" aria-label="A King Ranch F-250 going through the full Jasperson's wash">
-        <div class="reel__bars" aria-hidden="true"></div>
-        <video class="reel__video" data-src="assets/v/hero.mp4" poster="assets/img/hero-poster.jpg" muted playsinline loop preload="none"></video>
-        <div class="reel__shade" aria-hidden="true"></div>
-        <div class="reel__handle"><img src="assets/brand/logo-1080.jpg" alt="" width="28" height="28">@jaspersonsdetailing</div>
-        <figcaption class="reel__cap"><span class="reel__capn">Before</span><span class="reel__capt">Rolled in like this</span></figcaption>
-        <button class="reel__toggle" type="button" aria-label="Pause video" data-state="play">
-          <svg class="i-pause" viewBox="0 0 24 24"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg>
-          <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-      </figure>
-      <div class="feed__wall"></div>
+    <div class="profiles">
+      <a class="profile" href="https://www.tiktok.com/@jaspersonsdetailing" target="_blank" rel="noopener">
+        <img src="assets/brand/logo-1080.jpg" alt="" width="64" height="64" class="profile__av">
+        <span class="profile__who"><b>@jaspersonsdetailing</b><span class="profile__pf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>TikTok</span></span>
+        <span class="profile__stats"><span><b>845</b>videos</span><span><b>166K</b>likes</span><span><b>107K</b>top video</span></span>
+        <span class="profile__go">Follow</span>
+      </a>
+      <a class="profile" href="https://www.instagram.com/jaspersonsdetailing/" target="_blank" rel="noopener">
+        <img src="assets/brand/logo-1080.jpg" alt="" width="64" height="64" class="profile__av">
+        <span class="profile__who"><b>@jaspersonsdetailing</b><span class="profile__pf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm6-7.9a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1zM21.9 8.2a5.4 5.4 0 0 0-1.5-3.8 5.4 5.4 0 0 0-3.8-1.5C15.1 2.8 8.9 2.8 7.4 2.9a5.4 5.4 0 0 0-3.8 1.5A5.4 5.4 0 0 0 2.1 8.2c-.1 1.5-.1 7.7 0 9.2a5.4 5.4 0 0 0 1.5 3.8 5.4 5.4 0 0 0 3.8 1.5c1.5.1 7.7.1 9.2 0a5.4 5.4 0 0 0 3.8-1.5 5.4 5.4 0 0 0 1.5-3.8c.1-1.5.1-7.7 0-9.2z"/></svg>Instagram</span></span>
+        <span class="profile__stats"><span><b>4,866</b>followers</span><span><b>17K</b>top reel likes</span></span>
+        <span class="profile__go">Follow</span>
+      </a>
     </div>
+    <div class="posts"></div>
   </div>
 </section>
 
@@ -279,14 +380,17 @@
 <section class="story" id="story">
   <div class="wrap story__grid">
     <figure class="story__fig">
-      <img src="assets/img/owner.jpg" alt="Jasperson standing in the desert next to a 2008 Chevy Tahoe he gave away" loading="lazy" width="864" height="1080">
+      <img src="assets/img/owner-work.jpg" alt="Jasperson pressure-washing a white Ford F-250" loading="lazy" width="640" height="800">
     </figure>
     <div class="story__copy">
       <p class="eyebrow eyebrow--dark">The story</p>
       <h2 class="h2">Started with a <span class="tag tag--red">pressure washer.</span></h2>
-      <p>A little over three years ago it was a pressure-washing business: driveways, concrete, commercial jobs. A month or two in, a Phoenix landscaping company asked him to keep their fleet clean. That's where detailing clicked.</p>
-      <p>He quit his full-time job to go all in. The van got built out, the process got dialed, and the trucks started showing up on his page every day.</p>
-      <p>When the page hit 2,000 followers, he didn't run a discount. He gave away a 2008 Tahoe, plus two free full details.</p>
+      <p>A little over three years ago it was a pressure-washing business: driveways, concrete, commercial jobs. A month or two in, a Phoenix landscaping company asked us to keep their fleet clean. That's where detailing clicked.</p>
+      <p>The full-time job got left behind, the van got built out, and the process got dialed until it was the same on every truck.</p>
+      <div class="story__call">
+        <b>Owner-operated.</b>
+        <span>The guy in the videos is the guy at your truck. No crews you've never met.</span>
+      </div>
     </div>
   </div>
 </section>
@@ -297,18 +401,18 @@
     <h2 class="h2 h2--light">Before <span class="tag">you book.</span></h2>
     <div class="faq__list">
       <details><summary>Do I need to provide water or power?</summary><p>No. The van carries its own deionized water and generator. Just leave room to park next to the vehicle.</p></details>
-      <details><summary>How does a recurring plan work?</summary><p>You pick weekly, every 2 weeks or monthly, and you get the same day and arrival window every time. Every visit is the full Signature Wash process.</p></details>
+      <details><summary>How does a recurring plan work?</summary><p>Pick weekly, every 2 weeks or monthly, and you get the same day and arrival window every time. Every visit is the full Signature Wash process.</p></details>
       <details><summary>Can you work at my office or apartment?</summary><p>Usually, yes. Some complexes don't allow washing on site, so check with them first. Interiors are almost always fine.</p></details>
       <details><summary>How long does a full detail take?</summary><p>Plan on 4 to 6 hours for most vehicles, longer for lifted trucks. Ceramic coating is a 1 to 2 day job.</p></details>
       <details><summary>Is a ceramic coating worth it in Phoenix?</summary><p>For a vehicle that lives outside in this sun, it's the best protection you can buy. It lasts when it's maintained, which is what the plans are for.</p></details>
-      <details><summary>Do you do RVs, boats or fleets?</summary><p>Yes. They're on the side of the van for a reason. Text a photo and the size for a quote.</p></details>
+      <details><summary>Do you do RVs, boats or fleets?</summary><p>Yes. Text a photo and the size for a quote.</p></details>
     </div>
   </div>
 </section>
 
 <!-- ================================================================ FINAL CTA -->
 <section class="final">
-  <div class="final__tex" aria-hidden="true"></div>
+  <span class="final__tex" aria-hidden="true"></span>
   <div class="wrap final__grid">
     <h2 class="final__h"><span class="tag">Who's next?</span></h2>
     <div>
@@ -340,6 +444,6 @@
 </div>
 <div class="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/site.js?v=4" defer></script>
+<script src="assets/site.js?v=6" defer></script>
 </body>
 </html>
