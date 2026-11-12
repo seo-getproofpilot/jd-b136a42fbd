@@ -1,0 +1,45 @@
+{
+ "duration": 30.3,
+ "chapters": [
+  {
+   "key": "before",
+   "start": 0.0,
+   "end": 2.5
+  },
+  {
+   "key": "wheels",
+   "start": 2.5,
+   "end": 10.3
+  },
+  {
+   "key": "foam",
+   "start": 10.3,
+   "end": 13.1
+  },
+  {
+   "key": "contact",
+   "start": 13.1,
+   "end": 15.7
+  },
+  {
+   "key": "rinse",
+   "start": 15.7,
+   "end": 18.5
+  },
+  {
+   "key": "dry",
+   "start": 18.5,
+   "end": 22.7
+  },
+  {
+   "key": "dress",
+   "start": 22.7,
+   "end": 25.5
+  },
+  {
+   "key": "reveal",
+   "start": 25.5,
+   "end": 30.3
+  }
+ ]
+}
