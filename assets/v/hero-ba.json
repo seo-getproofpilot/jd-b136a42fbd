@@ -1,0 +1,55 @@
+{
+ "duration": 39.0,
+ "marks": [
+  {
+   "veh": "Ferrari California",
+   "stage": "In the foam",
+   "start": 0.0
+  },
+  {
+   "veh": "Ferrari California",
+   "stage": "Finished",
+   "start": 3.6
+  },
+  {
+   "veh": "King Ranch F-250",
+   "stage": "In the foam",
+   "start": 7.8
+  },
+  {
+   "veh": "King Ranch F-250",
+   "stage": "Finished",
+   "start": 11.2
+  },
+  {
+   "veh": "Silverado",
+   "stage": "In the foam",
+   "start": 15.6
+  },
+  {
+   "veh": "Silverado",
+   "stage": "Finished",
+   "start": 19.2
+  },
+  {
+   "veh": "GMT800 Sierra",
+   "stage": "In the foam",
+   "start": 23.2
+  },
+  {
+   "veh": "GMT800 Sierra",
+   "stage": "Finished",
+   "start": 26.8
+  },
+  {
+   "veh": "GMC Denali",
+   "stage": "In the foam",
+   "start": 31.0
+  },
+  {
+   "veh": "GMC Denali",
+   "stage": "Finished",
+   "start": 34.6
+  }
+ ]
+}

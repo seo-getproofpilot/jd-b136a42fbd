@@ -1,0 +1,82 @@
+[
+ {
+  "key": "ferrari",
+  "cat": "Cars",
+  "label": "Ferrari California"
+ },
+ {
+  "key": "kingranch",
+  "cat": "Trucks",
+  "label": "King Ranch F-250"
+ },
+ {
+  "key": "engraved",
+  "cat": "Trucks",
+  "label": "Hand-engraved Super Duty"
+ },
+ {
+  "key": "c8",
+  "cat": "Cars",
+  "label": "C8 Corvette"
+ },
+ {
+  "key": "dually",
+  "cat": "Trucks",
+  "label": "F-350 dually"
+ },
+ {
+  "key": "camo",
+  "cat": "Details",
+  "label": "Hand-engraved panels"
+ },
+ {
+  "key": "macan",
+  "cat": "Cars",
+  "label": "Porsche Macan"
+ },
+ {
+  "key": "platinum",
+  "cat": "Trucks",
+  "label": "F-250 Platinum"
+ },
+ {
+  "key": "yenko",
+  "cat": "Cars",
+  "label": "Yenko Chevelle"
+ },
+ {
+  "key": "bagged",
+  "cat": "Trucks",
+  "label": "Bagged Silverado"
+ },
+ {
+  "key": "dash",
+  "cat": "Interiors",
+  "label": "Custom dash & leather"
+ },
+ {
+  "key": "superduty",
+  "cat": "Trucks",
+  "label": "'23 Super Duty"
+ },
+ {
+  "key": "sierra",
+  "cat": "Trucks",
+  "label": "GMT800 Sierra"
+ },
+ {
+  "key": "wheel",
+  "cat": "Details",
+  "label": "M wheel, brake dust gone"
+ },
+ {
+  "key": "denali",
+  "cat": "Trucks",
+  "label": "GMC Denali"
+ },
+ {
+  "key": "silverado",
+  "cat": "Trucks",
+  "label": "Silverado"
+ }
+]
