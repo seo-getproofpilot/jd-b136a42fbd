@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Jasperson's Detailing | Phoenix Mobile Detailing Specialists</title>
-<meta name="description" content="Phoenix mobile detailing specialists. Signature Wash, Interior Deep Clean, Full Detail, Ceramic Coating and maintenance plans, done in your driveway. Book online or call 602-616-0058.">
+<meta name="description" content="Phoenix mobile detailing specialists serving Phoenix, Scottsdale, Mesa, Gilbert, Chandler, Glendale, Peoria and the whole Valley. Signature Wash, Interior Deep Clean, Full Detail, Ceramic Coating and maintenance plans. Book online or call 602-616-0058.">
 <meta name="theme-color" content="#0a0a0b">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,100,400..800&family=JetBrains+Mono:wght@500;700&family=Knewave&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=10">
+<link rel="stylesheet" href="assets/site.css?v=11">
 <link rel="icon" href="assets/brand/logo-1080.jpg">
 <link rel="preload" as="image" href="assets/brand/logo-full.png">
 <script>try{if(sessionStorage.getItem('jd-intro'))document.documentElement.classList.add('no-intro')}catch(e){}</script>
@@ -24,77 +24,66 @@
   <span class="intro__bar"></span>
 </div>
 
-<!-- ================================================================ HEADER (logo appears once the neon hero scrolls away) -->
-<header class="nav" id="top">
+<!-- ================================================================ HEADER -->
+<header class="nav is-hero" id="top">
   <a class="logo" href="#top" aria-label="Jasperson's Detailing, back to top"><img src="assets/brand/logo-wordmark.png" alt="Jasperson's Detailing" width="1025" height="391"></a>
-  <nav class="nav__links" aria-label="Main">
+  <nav class="nav__pill" aria-label="Main">
     <a href="#packages">Packages</a>
     <a href="#plans">Maintenance plans</a>
+    <a href="#book">Book</a>
     <a href="#work">Our work</a>
     <a href="#areas">Service areas</a>
   </nav>
   <a class="nav__phone" href="tel:+16026160058">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3h3l1.5 4.4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2L21 14.4v3A2.6 2.6 0 0 1 18.4 20 15.4 15.4 0 0 1 4 5.6 2.6 2.6 0 0 1 6.6 3z"/></svg>
-    602-616-0058
+    <span>602-616-0058</span>
   </a>
   <a class="btn btn--red nav__cta" href="#book">Book now</a>
 </header>
 
 <!-- ================================================================ HERO -->
 <section class="hero" aria-label="Jasperson's Detailing">
-  <div class="hero__video">
-    <video src="assets/v/hero-ba.mp4" poster="assets/img/hero-ba.jpg" muted playsinline autoplay loop preload="auto" aria-hidden="true"></video>
-    <div class="hero__stage" aria-hidden="true">
-      <span class="hero__stagek">In the foam</span>
-      <b class="hero__veh">Ferrari California</b>
-    </div>
-    <ol class="hero__dots" aria-hidden="true"></ol>
+  <div class="hero__video" aria-hidden="true">
+    <video src="assets/v/hero-ba.mp4" poster="assets/img/hero-ba.jpg" muted playsinline autoplay loop preload="auto"></video>
   </div>
-  <div class="hero__fade" aria-hidden="true"></div>
-
   <div class="hero__copy">
     <h1 class="hero__h1">
-      <span class="neon" role="img" aria-label="Jasperson's Detailing"><span class="neon__glow"></span><span class="neon__tube"></span></span>
+      <span class="brandmark" role="img" aria-label="Jasperson's Detailing">
+        <span class="brandmark__glow"></span>
+        <img src="assets/brand/logo-wordmark.png" alt="" width="1025" height="391">
+      </span>
       <span class="hero__line">Phoenix Mobile Detailing Specialists</span>
     </h1>
     <p class="hero__lede">Signature washes, interior deep cleans, full details, ceramic coating and maintenance plans. Trucks, cars and everything in between, done in your driveway.</p>
     <div class="hero__cta">
       <a class="btn btn--red btn--xl" href="#book">Book an appointment <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></a>
-      <a class="hero__see" href="#packages">See packages &amp; pricing</a>
+      <a class="btn btn--white btn--xl" href="#packages">See packages &amp; pricing</a>
     </div>
     <ul class="hero__facts">
       <li><b>We come to you</b><span>Home, office or job site</span></li>
       <li><b>Own water &amp; power</b><span>Nothing needed from you</span></li>
-      <li><b>4,866</b><span>Following on Instagram</span></li>
+      <li><b>1,000+</b><span>Washes done</span></li>
     </ul>
   </div>
 </section>
 
-<!-- ================================================================ PACKAGES: the van opens -->
+<!-- ================================================================ PACKAGES: on the van doors -->
 <section class="van" id="packages">
+  <span class="van__bg" aria-hidden="true"></span>
   <div class="wrap">
     <div class="sec-head sec-head--center">
       <p class="eyebrow">Packages &amp; pricing</p>
-      <h2 class="h2">Four packages. <span class="tag">Straight pricing.</span></h2>
-      <p class="sec-head__lede">Everything included is listed on the door. Price depends on the size of your vehicle.</p>
+      <h2 class="h2">The price is <span class="tag">on the door.</span></h2>
+      <p class="sec-head__lede">No quotes, no upsell in your driveway. Pick your vehicle and you'll see exactly what you pay and exactly what you get.</p>
     </div>
+    <div class="vsize" role="radiogroup" aria-label="What are you driving?"></div>
   </div>
   <div class="van__stage">
-    <div class="van__inside" aria-hidden="true">
-      <img src="assets/img/van-open.jpg" alt="" width="720" height="1280" loading="lazy">
-    </div>
-    <div class="door door--l"><div class="door__face"></div></div>
-    <div class="door door--r"><div class="door__face"></div></div>
+    <div class="van__col van__col--l"></div>
+    <figure class="van__photo"><img src="assets/img/van-big.jpg" alt="The back of the Jasperson's Detailing van with both doors open: branded buckets, foam cannons, generator and pressure washer" width="1080" height="1240" loading="lazy"></figure>
+    <div class="van__col van__col--r"></div>
   </div>
   <div class="wrap">
-    <div class="sizes">
-      <p class="sizes__k">Prices shown for</p>
-      <div class="sizes__opts" role="radiogroup" aria-label="Vehicle size">
-        <button type="button" role="radio" aria-checked="true" data-size="0">Car / small SUV</button>
-        <button type="button" role="radio" aria-checked="false" data-size="1">Truck / 3-row SUV</button>
-        <button type="button" role="radio" aria-checked="false" data-size="2">Lifted / HD / dually</button>
-      </div>
-    </div>
     <div class="extras">
       <p class="extras__k">Add to any package</p>
       <ul class="extras__list"></ul>
@@ -105,7 +94,7 @@
 <!-- ================================================================ MAINTENANCE CLUB -->
 <section class="club" id="plans">
   <span class="club__tex" aria-hidden="true"></span>
-  <div class="wrap">
+  <div class="wrap wrap--wide">
     <div class="club__top">
       <div class="club__pitch">
         <p class="eyebrow eyebrow--light">Maintenance plans</p>
@@ -128,78 +117,78 @@
         </div>
       </div>
     </div>
+    <div class="club__sizes" role="radiogroup" aria-label="Plan prices for"></div>
     <div class="tiers"></div>
     <p class="club__fine">Demo pricing shown for layout. Plans billed per month; cancel anytime.</p>
   </div>
 </section>
 
-<!-- ================================================================ BOOKING -->
+<!-- ================================================================ BOOKING: one box -->
 <section class="book" id="book">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <p class="eyebrow">Book an appointment</p>
-        <h2 class="h2">Pick it. Schedule it. <span class="tag">We pull up.</span></h2>
-      </div>
-      <p class="sec-head__lede">Choose your package, day and time. Logan confirms by text and shows up with everything.</p>
-    </div>
-    <form class="bk" novalidate>
-      <div class="bk__main">
-        <fieldset class="bk__step">
-          <legend><span>1</span>What are we doing?</legend>
-          <div class="bk__opts bk__opts--svc" data-name="svc"></div>
-        </fieldset>
-        <fieldset class="bk__step">
-          <legend><span>2</span>What are you driving?</legend>
-          <div class="bk__opts" data-name="size"></div>
-        </fieldset>
-        <fieldset class="bk__step">
-          <legend><span>3</span>Pick a day</legend>
-          <div class="cal">
-            <div class="cal__head"><button type="button" class="cal__nav" data-cal="-1" aria-label="Previous month">‹</button><b class="cal__month"></b><button type="button" class="cal__nav" data-cal="1" aria-label="Next month">›</button></div>
-            <div class="cal__dow"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
-            <div class="cal__grid"></div>
+  <div class="wrap wrap--wide">
+    <form class="bx" novalidate>
+      <header class="bx__head">
+        <span class="bx__tex" aria-hidden="true"></span>
+        <div>
+          <p class="bx__title">Book your detail</p>
+          <p class="bx__sub">Everything on one screen. Logan confirms by text, usually the same day.</p>
+        </div>
+        <p class="bx__phone">Rather call? <a href="tel:+16026160058">602-616-0058</a></p>
+      </header>
+
+      <div class="bx__body">
+        <div class="bx__col">
+          <div class="bq">
+            <p class="bq__k"><span>1</span>Pick your package</p>
+            <div class="chips chips--svc" data-name="svc"></div>
           </div>
-          <div class="slots" data-name="time"></div>
-        </fieldset>
-        <fieldset class="bk__step">
-          <legend><span>4</span>Where and who?</legend>
-          <label class="fld fld--full"><input name="addr" autocomplete="street-address" placeholder=" " required><span>Address where the vehicle will be</span></label>
-          <div class="fld2">
-            <label class="fld"><input name="name" autocomplete="name" placeholder=" " required><span>Name</span></label>
-            <label class="fld"><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " required><span>Mobile</span></label>
+          <div class="bq">
+            <p class="bq__k"><span>2</span>What are you driving?</p>
+            <div class="chips" data-name="size"></div>
           </div>
-          <div class="fld2">
-            <label class="fld"><input name="email" type="email" autocomplete="email" placeholder=" "><span>Email <i>(optional)</i></span></label>
-            <label class="fld"><input name="veh" placeholder=" "><span>Year, make &amp; model</span></label>
+          <div class="bq bq--last">
+            <p class="bq__k"><span>4</span>Where and who?</p>
+            <label class="fld"><input name="addr" autocomplete="street-address" placeholder=" " required><span>Address where the vehicle will be</span></label>
+            <div class="fld2">
+              <label class="fld"><input name="name" autocomplete="name" placeholder=" " required><span>Name</span></label>
+              <label class="fld"><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " required><span>Mobile</span></label>
+            </div>
+            <label class="fld"><input name="notes" placeholder=" "><span>Year, make &amp; model, gate code, pet hair… <i>(optional)</i></span></label>
           </div>
-          <label class="fld fld--full"><textarea name="notes" rows="2" placeholder=" "></textarea><span>Notes <i>(gate code, pet hair, stains)</i></span></label>
-        </fieldset>
+        </div>
+        <div class="bx__col">
+          <div class="bq">
+            <p class="bq__k"><span>3</span>Pick a day &amp; time</p>
+            <div class="cal">
+              <div class="cal__head"><button type="button" class="cal__nav" data-cal="-1" aria-label="Previous month">‹</button><b class="cal__month"></b><button type="button" class="cal__nav" data-cal="1" aria-label="Next month">›</button></div>
+              <div class="cal__dow"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>
+              <div class="cal__grid"></div>
+            </div>
+            <div class="chips chips--time" data-name="time"></div>
+          </div>
+        </div>
       </div>
 
-      <aside class="bk__sum">
-        <p class="bk__sumk">Your appointment</p>
-        <dl class="bk__lines">
-          <div><dt>Service</dt><dd data-sum="svc">Pick a package</dd></div>
+      <footer class="bx__foot">
+        <dl class="bx__sum">
+          <div><dt>Package</dt><dd data-sum="svc">Pick one</dd></div>
           <div><dt>Vehicle</dt><dd data-sum="size">—</dd></div>
-          <div><dt>Day</dt><dd data-sum="day">—</dd></div>
-          <div><dt>Time</dt><dd data-sum="time">—</dd></div>
+          <div><dt>When</dt><dd data-sum="when">Pick a day</dd></div>
+          <div class="bx__tot"><dt>Total</dt><dd data-sum="total">$0</dd></div>
         </dl>
-        <div class="bk__adds">
-          <p>Add-ons</p>
-          <div class="bk__addlist"></div>
+        <button type="submit" class="btn btn--red btn--xl">Request appointment</button>
+      </footer>
+
+      <div class="bx__done" hidden>
+        <p class="bx__donek">Request sent</p>
+        <p class="bx__doneh">You're booked in.</p>
+        <dl class="bx__donesum"></dl>
+        <p class="bx__donep">Logan will text you to confirm. Want it on his phone right now?</p>
+        <div class="bx__donebtns">
+          <a class="btn btn--red btn--lg" href="sms:+16026160058" data-sms-summary>Text the details to Logan</a>
+          <button type="button" class="btn btn--ghost btn--lg bx__again">Book another vehicle</button>
         </div>
-        <div class="bk__total"><span>Estimated total</span><b data-sum="total">$0</b></div>
-        <button type="submit" class="btn btn--red btn--block btn--lg">Request appointment</button>
-        <p class="bk__fine">No payment now. Logan confirms by text, usually the same day.</p>
-        <div class="bk__done" hidden>
-          <p class="bk__donek">Request sent</p>
-          <p class="bk__doneh">You're booked in.</p>
-          <p class="bk__donep">Logan will text you to confirm the time. Want to send it straight to his phone too?</p>
-          <a class="btn btn--red btn--block" href="sms:+16026160058" data-sms-summary>Text the details to Logan</a>
-          <button type="button" class="bk__again">Book another vehicle</button>
-        </div>
-      </aside>
+      </div>
     </form>
   </div>
 </section>
@@ -207,7 +196,7 @@
 <!-- ================================================================ WHY -->
 <section class="why" id="why">
   <span class="why__bg" aria-hidden="true"></span>
-  <div class="wrap">
+  <div class="wrap wrap--wide">
     <div class="sec-head">
       <div>
         <p class="eyebrow">Why Jasperson's</p>
@@ -241,7 +230,7 @@
 
 <!-- ================================================================ PRODUCTS -->
 <section class="prod" id="products">
-  <div class="wrap">
+  <div class="wrap wrap--wide">
     <div class="sec-head">
       <div>
         <p class="eyebrow">Brands we trust</p>
@@ -260,55 +249,63 @@
   </div>
 </section>
 
-<!-- ================================================================ INSTAGRAM -->
+<!-- ================================================================ INSTAGRAM (styled like a profile) -->
 <section class="ig" id="instagram">
-  <div class="wrap">
-    <div class="igp">
-      <img class="igp__av" src="assets/brand/logo-1080.jpg" alt="" width="112" height="112">
-      <div class="igp__info">
-        <p class="eyebrow">Follow along</p>
-        <p class="igp__handle">@jaspersonsdetailing</p>
-        <ul class="igp__stats"><li><b>4,866</b> Instagram followers</li><li><b>845</b> TikTok videos</li><li><b>166K</b> TikTok likes</li></ul>
+  <div class="wrap wrap--wide">
+    <div class="igx">
+      <div class="igx__top">
+        <span class="igx__ring"><img src="assets/brand/logo-1080.jpg" alt="Jasperson's Detailing profile photo" width="150" height="150"></span>
+        <div class="igx__meta">
+          <div class="igx__row">
+            <p class="igx__user">jaspersonsdetailing</p>
+            <a class="igx__btn igx__btn--follow" href="https://www.instagram.com/jaspersonsdetailing/" target="_blank" rel="noopener">Follow on Instagram</a>
+            <a class="igx__btn" href="https://www.tiktok.com/@jaspersonsdetailing" target="_blank" rel="noopener">Watch on TikTok</a>
+          </div>
+          <ul class="igx__stats"><li><b>4,866</b> followers</li><li><b>774</b> following</li><li><b>845</b> TikToks</li><li><b>166K</b> TikTok likes</li></ul>
+          <p class="igx__bio"><b>Jasperson's Detailing Service</b><br>⚜️ Mobile Detailing | Phoenix, AZ<br>⚜️ Interior • Exterior • Ceramic Coatings<br>⚜️ We come to you · 602-616-0058</p>
+        </div>
       </div>
-      <div class="igp__btns">
-        <a class="btn btn--red" href="https://www.instagram.com/jaspersonsdetailing/" target="_blank" rel="noopener">Follow on Instagram</a>
-        <a class="btn btn--ghost" href="https://www.tiktok.com/@jaspersonsdetailing" target="_blank" rel="noopener">Watch on TikTok</a>
-      </div>
+      <ul class="igx__hl" aria-label="Highlights">
+        <li><span><img src="assets/img/pf-dash.jpg" alt="" loading="lazy"></span>Interior</li>
+        <li><span><img src="assets/img/pf-kingranch.jpg" alt="" loading="lazy"></span>Exterior</li>
+        <li><span><img src="assets/img/beading.jpg" alt="" loading="lazy"></span>Ceramic</li>
+        <li><span><img src="assets/img/pf-ferrari.jpg" alt="" loading="lazy"></span>Exotics</li>
+        <li><span><img src="assets/img/van-open.jpg" alt="" loading="lazy"></span>The setup</li>
+      </ul>
+      <div class="igx__tabs" aria-hidden="true"><span>Posts</span><span class="is-on">Reels</span><span>Tagged</span></div>
     </div>
   </div>
-  <div class="reels-wrap">
-    <button type="button" class="arrow arrow--l" data-rscroll="-1" aria-label="Previous videos"><svg viewBox="0 0 20 20"><path d="M12 4l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
-    <div class="reels" aria-label="Recent videos"></div>
-    <button type="button" class="arrow arrow--r" data-rscroll="1" aria-label="More videos"><svg viewBox="0 0 20 20"><path d="M8 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+  <div class="reelrun" aria-label="Recent reels from Instagram and TikTok">
+    <div class="reelrun__track"></div>
   </div>
 </section>
 
-<!-- ================================================================ PORTFOLIO -->
-<section class="pf" id="work">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <p class="eyebrow">Our work</p>
-        <h2 class="h2">Fresh off <span class="tag">the driveway.</span></h2>
-      </div>
-      <div class="pf__tabs" role="tablist" aria-label="Filter work"></div>
+<!-- ================================================================ GALLERY: up/down columns -->
+<section class="gal" id="work">
+  <div class="wrap wrap--wide gal__grid">
+    <div class="gal__copy">
+      <p class="eyebrow">Our work</p>
+      <h2 class="h2">Fresh off <span class="tag">the driveway.</span></h2>
+      <p class="sec-head__lede">Ferraris, Corvettes, Super Duties, duallies and daily drivers. Every one of these was done in a driveway in the Valley.</p>
+      <a class="btn btn--white btn--lg" href="https://www.instagram.com/jaspersonsdetailing/" target="_blank" rel="noopener">See more on Instagram</a>
     </div>
-    <div class="pf__grid"></div>
+    <div class="cols" aria-label="Photos of recent work"></div>
   </div>
 </section>
 
 <!-- ================================================================ SERVICE AREAS -->
 <section class="areas" id="areas">
-  <div id="map" class="map" role="img" aria-label="Map of the Phoenix area showing where Jasperson's Detailing travels"></div>
+  <div id="map" class="map" role="img" aria-label="Map of the Phoenix area showing the cities Jasperson's Detailing serves"></div>
   <div class="areas__panel">
     <p class="eyebrow">Service areas</p>
     <h2 class="h2">We come <span class="tag">to you.</span></h2>
-    <p class="areas__lede">Every package and plan, anywhere in the Valley. Based in North Phoenix.</p>
+    <p class="areas__lede">Mobile detailing across the Phoenix Valley. Every package and plan, at your home, office or job site.</p>
     <form class="check" novalidate>
       <label class="check__fld"><span class="sr">Your address or ZIP</span><input name="q" placeholder="Enter your address or ZIP" autocomplete="street-address"></label>
       <button type="submit" class="btn btn--red">Check my area</button>
     </form>
     <div class="check__out" aria-live="polite" hidden></div>
+    <h3 class="areas__k">Mobile detailing in</h3>
     <ul class="cities"></ul>
   </div>
 </section>
@@ -321,9 +318,9 @@
       <details><summary>Do I need to provide water or power?</summary><p>No. The van carries its own deionized water and generator. Just leave room to park next to the vehicle.</p></details>
       <details><summary>How do maintenance plans work?</summary><p>Pick weekly, every 2 weeks or monthly. You're billed monthly, you get the same day and arrival window every visit, and every visit is the full Signature Wash. Cancel anytime.</p></details>
       <details><summary>Which package should I pick?</summary><p>Signature Wash keeps a clean vehicle clean. Interior Deep Clean is for the inside only. Full Detail does both, top to bottom. Ceramic Coating is long-term protection for the paint.</p></details>
-      <details><summary>How long does it take?</summary><p>A Signature Wash is about 1.5 to 2 hours, a Full Detail 4 to 6 hours, and ceramic coating 1 to 2 days. Lifted trucks run longer.</p></details>
+      <details><summary>How long does it take?</summary><p>A Signature Wash is about 1.5 to 2 hours, a Full Detail 4 to 6 hours, and ceramic coating 1 to 2 days. Lifted trucks, RVs and boats run longer.</p></details>
       <details><summary>Can you work at my office or apartment?</summary><p>Usually, yes. Some complexes don't allow washing on site, so check with them first. Interiors are almost always fine.</p></details>
-      <details><summary>Do you do fleets, RVs, boats or bikes?</summary><p>Yes. Text a photo and the details to 602-616-0058 and Logan will quote it.</p></details>
+      <details><summary>Do you do fleets, RVs, boats or bikes?</summary><p>Yes. RV and boat pricing is on the van doors above. For fleets and bikes, text a photo to 602-616-0058 and Logan will quote it.</p></details>
     </div>
   </div>
 </section>
@@ -359,10 +356,9 @@
   <a class="btn btn--ghost" href="tel:+16026160058">Call</a>
   <a class="btn btn--red" href="#book">Book now</a>
 </div>
-<div class="lb" hidden><button type="button" class="lb__x" aria-label="Close">✕</button><button type="button" class="lb__nav lb__nav--l" aria-label="Previous">‹</button><figure><img alt=""><figcaption></figcaption></figure><button type="button" class="lb__nav lb__nav--r" aria-label="Next">›</button></div>
 <div class="toast" role="status" aria-live="polite"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin defer></script>
-<script src="assets/site.js?v=10" defer></script>
+<script src="assets/site.js?v=11" defer></script>
 </body>
 </html>
