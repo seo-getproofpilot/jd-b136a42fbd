@@ -146,6 +146,7 @@ function initVan() {
   $(".vsize").innerHTML = SIZES.map((s, i) => `<button type="button" role="radio" aria-checked="${i === S.size}" data-size="${i}">${ICONS[i]}<span><b>${s}</b><small>${SIZE_SUB[i]}</small></span></button>`).join("");
   $(".vsize").addEventListener("click", e => { const b = e.target.closest("button"); if (b) setSize(+b.dataset.size); });
   renderDoors();
+  new IntersectionObserver(([en], o) => { if (en.isIntersecting) { $(".van").classList.add("is-open"); o.disconnect(); } }, { threshold: .2 }).observe($(".vanbody"));
   $(".extras__list").innerHTML = ADDS.map(([n, p]) => `<li>${n}<b>+${money(p)}</b></li>`).join("");
 }
 function setSize(i) {

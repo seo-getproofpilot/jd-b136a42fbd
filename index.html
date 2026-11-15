@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,100,400..800&family=JetBrains+Mono:wght@500;700&family=Knewave&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=11">
+<link rel="stylesheet" href="assets/site.css?v=12">
 <link rel="icon" href="assets/brand/logo-1080.jpg">
 <link rel="preload" as="image" href="assets/brand/logo-full.png">
 <script>try{if(sessionStorage.getItem('jd-intro'))document.documentElement.classList.add('no-intro')}catch(e){}</script>
@@ -79,9 +79,16 @@
     <div class="vsize" role="radiogroup" aria-label="What are you driving?"></div>
   </div>
   <div class="van__stage">
-    <div class="van__col van__col--l"></div>
-    <figure class="van__photo"><img src="assets/img/van-big.jpg" alt="The back of the Jasperson's Detailing van with both doors open: branded buckets, foam cannons, generator and pressure washer" width="1080" height="1240" loading="lazy"></figure>
-    <div class="van__col van__col--r"></div>
+    <div class="vanbody">
+      <div class="door door--l"><span class="door__win" aria-hidden="true"></span><div class="van__col van__col--l"></div></div>
+      <figure class="van__cargo">
+        <span class="van__roof" aria-hidden="true"><i></i></span>
+        <span class="van__light van__light--l" aria-hidden="true"></span><span class="van__light van__light--r" aria-hidden="true"></span>
+        <img src="assets/img/van-cargo.jpg" alt="Inside the Jasperson's Detailing van: branded Yeti buckets, foam cannons, Predator generator, hose reel and pressure washer" width="644" height="712" loading="lazy">
+        <span class="van__bumper" aria-hidden="true"></span>
+      </figure>
+      <div class="door door--r"><span class="door__win" aria-hidden="true"></span><div class="van__col van__col--r"></div></div>
+    </div>
   </div>
   <div class="wrap">
     <div class="extras">
@@ -359,6 +366,6 @@
 <div class="toast" role="status" aria-live="polite"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin defer></script>
-<script src="assets/site.js?v=11" defer></script>
+<script src="assets/site.js?v=12" defer></script>
 </body>
 </html>
