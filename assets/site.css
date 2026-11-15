@@ -435,7 +435,7 @@ body.is-intro{overflow:hidden}
 .map{position:absolute;inset:0;z-index:0}
 .map .leaflet-tile-pane{filter:brightness(1.5) contrast(1.12) saturate(.5)}
 .areas::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(11,11,12,.9) 0%,rgba(11,11,12,.55) 28%,rgba(11,11,12,0) 50%),linear-gradient(180deg,var(--ink) 0%,rgba(11,11,12,0) 9%,rgba(11,11,12,0) 91%,var(--ink) 100%)}
-.areas__panel{position:relative;z-index:2;width:min(560px,100% - 32px);margin:100px 0 100px var(--gut);padding:36px;border-radius:24px;background:rgba(14,14,16,.94);border:1px solid var(--line-2);backdrop-filter:blur(10px);box-shadow:0 40px 80px -30px #000}
+.areas__panel{position:relative;z-index:2;width:min(560px,100% - 32px);margin:100px 0 100px clamp(24px,7vw,140px);padding:36px;border-radius:24px;background:rgba(14,14,16,.94);border:1px solid var(--line-2);backdrop-filter:blur(10px);box-shadow:0 40px 80px -30px #000}
 .areas__lede{font-size:17px;color:#cfccc6;margin:16px 0 22px}
 .check{display:flex;gap:8px;margin-bottom:12px}
 .check__fld{flex:1;min-width:0}

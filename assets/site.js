@@ -333,7 +333,7 @@ function initMap() {
   L.tileLayer(ESRI + "World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16, attribution: "Tiles &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors" }).addTo(map);
   const markers = CITIES.map(([n, lat, lng, base]) => L.marker([lat, lng], { icon: L.divIcon({ className: "", html: `<span class="pin${base ? " pin--base" : ""}"><i></i></span>`, iconSize: [22, 22], iconAnchor: [11, 11] }), title: n })
     .addTo(map).bindTooltip(base ? `${n} · home base` : n, { className: "city-lbl" + (base ? " is-base" : ""), direction: LEFT.includes(n) ? "left" : "right", offset: [LEFT.includes(n) ? -10 : 10, 0], permanent: !QUIET.includes(n) }));
-  const fit = () => { const b = L.latLngBounds(CITIES.map(c => [c[1], c[2]])); const panel = innerWidth > 760 ? Math.min(620, innerWidth * .4) : 0; map.fitBounds(b, { paddingTopLeft: [panel + 40, 80], paddingBottomRight: [90, 80] }); };
+  const fit = () => { const b = L.latLngBounds(CITIES.map(c => [c[1], c[2]])); const panel = innerWidth > 760 ? Math.min(620, innerWidth * .4) : 0; map.fitBounds(b, { paddingTopLeft: [panel + 40 + (panel ? Math.min(140, Math.max(24, innerWidth * .07)) : 0), 80], paddingBottomRight: [90, 80] }); };
   initHopper(markers);
   fit(); addEventListener("resize", () => { clearTimeout(fit._t); fit._t = setTimeout(fit, 200); });
   list.addEventListener("click", e => {
