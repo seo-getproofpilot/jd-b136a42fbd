@@ -822,3 +822,14 @@ body.is-intro{overflow:hidden}
 
 /* v29: the count-up number matches the other hero facts */
 .hero__facts b [data-count]{font:inherit;color:inherit;display:inline}
+
+/* ================================================================ v30: Arizona dusk behind Meet Logan */
+.story{background:var(--ink);padding:calc(var(--sec) * 1.1) 0 calc(var(--sec) * 1.6)}
+.story__scene{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg,var(--ink) 0%,rgba(11,11,12,0) 22%,rgba(11,11,12,0) 86%,var(--ink) 100%),
+  url(img/az-scene.svg) center bottom/cover no-repeat}
+.facts li{background:rgba(12,10,11,.72);border-color:rgba(255,255,255,.14);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.story__q{background:rgba(12,10,11,.74);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.story__p{text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.story__main{box-shadow:0 50px 100px -40px #000,0 0 0 1px rgba(255,255,255,.18)}
+@media (max-width:760px){.story__scene{background:linear-gradient(180deg,var(--ink) 0%,rgba(11,11,12,.2) 18%,rgba(11,11,12,0) 70%,var(--ink) 100%),url(img/az-scene.svg) 30% bottom/auto 70% no-repeat,var(--ink)}}

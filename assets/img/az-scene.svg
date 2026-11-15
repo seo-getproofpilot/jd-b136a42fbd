@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b0b0c"/>
+      <stop offset=".38" stop-color="#26131a"/>
+      <stop offset=".62" stop-color="#6b2b2a"/>
+      <stop offset=".8" stop-color="#c8643c"/>
+      <stop offset=".9" stop-color="#e8955a"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="1150" cy="505" r="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffd08a" stop-opacity=".95"/>
+      <stop offset=".18" stop-color="#ffb06a" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#ff8a4a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a4a4f"/><stop offset="1" stop-color="#6a3a42"/></linearGradient>
+    <linearGradient id="mid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a2429"/><stop offset="1" stop-color="#341a1f"/></linearGradient>
+    <linearGradient id="near" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22131a"/><stop offset="1" stop-color="#170d11"/></linearGradient>
+  </defs>
+
+  <rect width="1600" height="760" fill="url(#sky)"/>
+  <circle cx="1150" cy="505" r="260" fill="url(#sun)"/>
+  <circle cx="1150" cy="512" r="34" fill="#ffd9a0" opacity=".9"/>
+
+  <!-- far ridge: soft mesas -->
+  <path fill="url(#far)" d="M0 520 L90 500 L160 506 L230 470 L300 476 L340 452 L420 455 L470 488 L560 492 L640 446 L700 440 L760 470 L860 478 L930 430 L1010 424 L1060 456 L1150 470 L1240 438 L1300 418 L1350 420 L1420 460 L1500 452 L1600 470 L1600 760 L0 760Z"/>
+  <!-- mid ridge: jagged desert mountains -->
+  <path fill="url(#mid)" d="M0 572 L70 548 L130 560 L210 512 L250 526 L300 498 L360 540 L420 530 L480 556 L560 520 L610 532 L690 488 L740 508 L800 496 L870 544 L950 536 L1010 560 L1080 522 L1130 538 L1210 500 L1260 518 L1330 492 L1400 536 L1470 528 L1540 552 L1600 540 L1600 760 L0 760Z"/>
+  <!-- near ridge -->
+  <path fill="url(#near)" d="M0 620 C120 600 220 612 320 596 C430 580 520 606 640 600 C760 594 860 572 980 584 C1100 596 1200 576 1320 588 C1430 598 1520 590 1600 596 L1600 760 L0 760Z"/>
+  <!-- desert floor -->
+  <path fill="#100a0c" d="M0 668 C200 652 400 664 600 656 C800 648 1000 664 1200 654 C1360 646 1480 656 1600 650 L1600 760 L0 760Z"/>
+
+  <!-- saguaros: round-capped strokes -->
+  <g fill="none" stroke="#0a0708" stroke-linecap="round" stroke-linejoin="round">
+    <!-- big left saguaro -->
+    <g stroke-width="30">
+      <path d="M190 700 V470"/>
+      <path d="M190 590 H150 Q132 590 132 572 V520"/>
+      <path d="M190 560 H226 Q244 560 244 542 V492"/>
+    </g>
+    <!-- mid-left saguaro -->
+    <g stroke-width="18">
+      <path d="M430 690 V560"/>
+      <path d="M430 628 H404 Q394 628 394 618 V588"/>
+    </g>
+    <!-- far small saguaro -->
+    <g stroke-width="9" stroke="#1b0f13">
+      <path d="M700 612 V560"/>
+      <path d="M700 588 H712 Q718 588 718 582 V568"/>
+    </g>
+    <!-- right saguaro (frames the sun) -->
+    <g stroke-width="26">
+      <path d="M1420 704 V496"/>
+      <path d="M1420 612 H1384 Q1368 612 1368 596 V548"/>
+      <path d="M1420 576 H1454 Q1470 576 1470 560 V520"/>
+      <path d="M1420 640 H1452 Q1466 640 1466 626 V606"/>
+    </g>
+    <!-- small right saguaro -->
+    <g stroke-width="14">
+      <path d="M1270 690 V598"/>
+      <path d="M1270 640 H1292 Q1300 640 1300 632 V612"/>
+    </g>
+    <!-- distant saguaros on the ridge -->
+    <g stroke-width="6" stroke="#2a161b">
+      <path d="M980 588 V556"/><path d="M980 572 H988 V562"/>
+      <path d="M1100 600 V572"/><path d="M1100 586 H1093 V578"/>
+      <path d="M560 606 V580"/><path d="M560 594 H567 V586"/>
+    </g>
+  </g>
+
+  <!-- ocotillo -->
+  <g fill="none" stroke="#0c0809" stroke-width="3" stroke-linecap="round">
+    <path d="M820 700 Q812 640 790 600"/><path d="M822 700 Q822 630 816 588"/><path d="M824 700 Q834 640 852 604"/><path d="M826 700 Q842 652 870 626"/><path d="M818 700 Q800 656 774 630"/>
+  </g>
+
+  <!-- prickly pear + brush in the foreground -->
+  <g fill="#0a0708">
+    <ellipse cx="560" cy="702" rx="28" ry="20"/><ellipse cx="590" cy="684" rx="20" ry="15" transform="rotate(25 590 684)"/><ellipse cx="534" cy="684" rx="18" ry="14" transform="rotate(-25 534 684)"/>
+    <ellipse cx="1080" cy="706" rx="24" ry="17"/><ellipse cx="1104" cy="690" rx="16" ry="12" transform="rotate(30 1104 690)"/>
+    <ellipse cx="60" cy="712" rx="60" ry="18"/><ellipse cx="330" cy="712" rx="70" ry="16"/><ellipse cx="960" cy="714" rx="80" ry="15"/><ellipse cx="1560" cy="712" rx="70" ry="18"/>
+  </g>
+  <rect y="708" width="1600" height="52" fill="#0b0b0c"/>
+</svg>
