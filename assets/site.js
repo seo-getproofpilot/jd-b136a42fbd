@@ -26,17 +26,18 @@ const SIZE_SUB = ["Sedans, coupes, crossovers", "Half-tons, HDs, duallies", "Mot
 const PKGS = [
   { id: "wash", n: "Signature Wash", lead: "Keeps a clean vehicle clean", t: "1.5–2 hrs", p: [85, 110, 199], li: ["Wheels, barrels & tires", "Wheel wells degreased", "Snow-foam prewash", "Hand contact wash", "Spot-free rinse", "Touchless blow-dry", "Ceramic spray topper", "Interior vacuum & wipe"] },
   { id: "interior", n: "Interior Deep Clean", lead: "The inside, reset", t: "2.5–3.5 hrs", p: [159, 189, 249], li: ["Deep vacuum, under seats", "Carpets shampooed", "Mats extracted", "Leather conditioned", "Plastics & panels dressed", "Vents & cupholders", "Odor treatment", "Glass inside & out"] },
-  { id: "full", n: "Full Detail", lead: "Top to bottom, inside and out", t: "4–6 hrs", hi: "Most complete", p: [249, 309, 449], li: ["Full Signature Wash", "Full Interior Deep Clean", "Paint sealant", "Door jambs", "Exterior trim dressed", "Engine bay wipe-down", "Glass inside & out", "Final walk-around"] },
+  { id: "full", n: "Full Detail", lead: "Top to bottom, inside and out", t: "4–6 hrs", hi: "Most common", p: [249, 309, 449], li: ["Full Signature Wash", "Full Interior Deep Clean", "Paint sealant", "Door jambs", "Exterior trim dressed", "Engine bay wipe-down", "Glass inside & out", "Final walk-around"] },
   { id: "ceramic", n: "Ceramic Coating", lead: "Years of protection", t: "1–2 days", p: [899, 1149, null], li: ["Decon wash, iron & clay", "Machine polish", "Ceramic on paint", "Wheel faces coated", "Glass coated", "Trim protected", "Aftercare walkthrough", "First maintenance wash"] },
 ];
 const PLANS = [
-  { id: "weekly", n: "Weekly", card: "black", f: "Daily drivers & work trucks", per: [69, 89, 159], visits: 4, save: "Save 19% per wash",
-    li: ["4 Signature Washes a month", "Wheels, wells & tires every visit", "Spot-free rinse & blow-dry", "Ceramic topper every visit", "Interior vacuum & wipe"] },
-  { id: "biweekly", n: "Every 2 weeks", card: "neon", f: "The one most people pick", hi: "Most popular", per: [75, 97, 175], visits: 2, save: "Save 12% per wash",
-    li: ["2 Signature Washes a month", "Wheels, wells & tires every visit", "Spot-free rinse & blow-dry", "Ceramic topper every visit", "Interior vacuum & wipe", "Keeps a coating performing"] },
-  { id: "monthly", n: "Monthly", card: "chrome", f: "Weekend trucks & garage cars", per: [109, 135, 219], visits: 1, save: "Full interior pass included",
+  { id: "monthly", n: "Monthly", card: "silver", cardName: "Silver", no: "4058  6160  0058  0112", f: "Weekend trucks & garage cars", per: [109, 135, 219], visits: 1, save: "Full interior pass included",
     li: ["1 visit a month", "Full Signature Wash", "Full interior vacuum & mats", "Plastics cleaned & dressed", "Glass inside & out"], plus: true },
+  { id: "weekly", n: "Weekly", card: "red", cardName: "Red", no: "4058  6160  0058  0001", f: "Daily drivers & work trucks", hi: "Best of the best", per: [69, 89, 159], visits: 4, save: "Save 19% per wash",
+    li: ["4 Signature Washes a month", "Wheels, wells & tires every visit", "Spot-free rinse & blow-dry", "Ceramic topper every visit", "Interior vacuum & wipe", "Never a dirty week"] },
+  { id: "biweekly", n: "Every 2 weeks", card: "black", cardName: "Black", no: "4058  6160  0058  0024", f: "Keeps a coating performing", per: [75, 97, 175], visits: 2, save: "Save 12% per wash",
+    li: ["2 Signature Washes a month", "Wheels, wells & tires every visit", "Spot-free rinse & blow-dry", "Ceramic topper every visit", "Interior vacuum & wipe"] },
 ];
+const NFC = '<svg class="tc__nfc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8.5 7.5a6 6 0 0 1 0 9M12 5a9.5 9.5 0 0 1 0 14M15.5 2.8a13 13 0 0 1 0 18.4"/></svg>';
 const ADDS = [["Engine bay detail", 75], ["Undercarriage & frame", 79], ["Headlight restoration", 79], ["Pet hair removal", 49], ["Odor elimination", 59], ["Glass coating", 99]];
 const CLIPS = [
   ["Shine Supply", "Cool Guy wheel cleaner", "Breaks brake dust down in the barrel", "step-wheels"],
@@ -161,7 +162,10 @@ function renderTiers() {
     const per = p.per[S.size], mo = per * p.visits;
     return `<article class="tier${p.hi ? " tier--hi" : ""}">
       ${p.hi ? `<span class="tier__flag">${p.hi}</span>` : ""}
-      <div class="tier__card tier__card--${p.card}" aria-hidden="true"><img src="assets/brand/logo-wordmark.png" alt="" width="1025" height="391"><span>${p.n}</span><i>Member</i></div>
+      <div class="tier__card tier__card--${p.card}" aria-hidden="true">
+        <img class="tc__logo" src="assets/brand/logo-wordmark.png" alt="" width="1025" height="391"><span class="tc__tier">${p.cardName}<br>${p.n}</span>
+        <span class="tc__chip"></span>${NFC}<span class="tc__no">${p.no}</span>
+        <span class="tc__name"><small>Club member</small>Your name here</span><span class="tc__thru"><small>Member since</small>2026</span></div>
       <h3 class="tier__n">${p.n}</h3><p class="tier__f">${p.f}</p>
       <p class="tier__p"><b>${money(mo)}</b><span>/ month</span></p>
       <p class="tier__per">${money(per)} per wash <span class="tier__save">${p.save}</span></p>
