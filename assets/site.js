@@ -15,11 +15,18 @@ const REELI = '<svg viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7 2h10a5 5
 const TTI = '<svg viewBox="0 0 24 24"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>';
 const PIN = '<svg viewBox="0 0 12 14" aria-hidden="true"><path d="M6 0a5 5 0 0 0-5 5c0 3.6 5 9 5 9s5-5.4 5-9a5 5 0 0 0-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>';
 const ICONS = [
-  '<svg viewBox="0 0 66 40"><path d="M4 28v-6l6-2 9-9h20l10 9 11 2.5V28"/><path d="M19 11l-3 9h33"/><circle cx="16" cy="29" r="5"/><circle cx="50" cy="29" r="5"/><path d="M21 29h24M4 28h7M55 28h6"/></svg>',
-  '<svg viewBox="0 0 66 40"><path d="M3 27V17h22V6h17l7 11h13v10"/><path d="M30 17V9h10l5 8"/><circle cx="15" cy="28" r="6"/><circle cx="50" cy="28" r="6"/><path d="M21 28h23M3 27h6M56 27h6"/></svg>',
-  '<svg viewBox="0 0 66 40"><rect x="3" y="5" width="44" height="22" rx="3"/><path d="M47 12h9l7 8v7H47"/><path d="M10 12h10v7H10zM27 12h12"/><circle cx="16" cy="29" r="5"/><circle cx="52" cy="29" r="5"/></svg>',
+  '<svg viewBox="0 0 96 50"><path d="M6 34v-7c0-2 1-3.2 3-3.7l10.5-3L29 12.2c1.5-1.4 3.4-2.2 5.4-2.2h24c2.2 0 4.2 1 5.6 2.6L72 21l12.4 2.4c2.3.5 3.6 2.4 3.6 4.8V34"/><path d="M27.5 21l7-7H45v7zM50 14h8.4c1 0 2 .5 2.7 1.3L65.5 21H50z"/><circle cx="22" cy="35" r="7"/><circle cx="72" cy="35" r="7"/><circle class="ic-a" cx="22" cy="35" r="2.4"/><circle class="ic-a" cx="72" cy="35" r="2.4"/><path d="M29 35h36M4 34h11M79 34h11"/><path class="ic-f" d="M84 3c.6 3 1.6 4 4.6 4.6-3 .6-4 1.6-4.6 4.6-.6-3-1.6-4-4.6-4.6 3-.6 4-1.6 4.6-4.6z"/></svg>',
+  '<svg viewBox="0 0 96 50"><path d="M6 29v-8h34V9h17c2 0 3.6 1 4.6 2.6L68 21h17c2 0 3 1 3 3v5"/><path d="M45 12.5h10.5L61 21H45z"/><path d="M40 21v8M6 29h82"/><path class="ic-a" d="M44 5h16" stroke-width="3.4"/><circle cx="23" cy="37" r="9"/><circle cx="71" cy="37" r="9"/><circle class="ic-a" cx="23" cy="37" r="3.4"/><circle class="ic-a" cx="71" cy="37" r="3.4"/><path d="M23 29v-1M71 29v-1M33 33h28"/></svg>',
+  '<svg viewBox="0 0 96 50"><path d="M3 33V12c0-2 1.5-3.5 3.5-3.5H49c3 0 5.4 1.4 7 4L62 23v10"/><path d="M8 14h11v7H8zM24 14h14v6H24zM51 13.5l6.5 9.5H51z"/><circle cx="15" cy="35" r="6"/><circle cx="49" cy="35" r="6"/><path d="M21 34h22M62 31h6"/><path class="ic-a" d="M67 27h27c-1.6 4.2-4.4 7-8.5 7H72z"/><path d="M74 27l4-6h7"/><path d="M68 38h20"/><circle cx="80" cy="41" r="3"/></svg>',
 ];
-
+const AIC = {
+  engine: '<svg viewBox="0 0 24 24"><path d="M3 10h3V8h11l2.5 3H21v5h-1.5L17 19H8l-2-2H3z"/><path d="M9 8V5h5v3M3 12v3"/></svg>',
+  under: '<svg viewBox="0 0 24 24"><path d="M3 10h18M5 10l2-4h10l2 4"/><circle cx="7" cy="12" r="1.7"/><circle cx="17" cy="12" r="1.7"/><path d="M7 16v4M12 15v5M17 16v4"/></svg>',
+  light: '<svg viewBox="0 0 24 24"><path d="M11 6C7 6 4 8.7 4 12s3 6 7 6h1V6z"/><path d="M15.5 8l5-1.5M15.5 12H21M15.5 16l5 1.5"/></svg>',
+  pet: '<svg viewBox="0 0 24 24"><path d="M12 13c-3 0-5.5 3-5.5 5 0 1.5 1.2 2 2.5 2 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.3 0 2.5-.5 2.5-2 0-2-2.5-5-5.5-5z"/><circle cx="6" cy="10" r="1.8"/><circle cx="9.5" cy="5.8" r="1.8"/><circle cx="14.5" cy="5.8" r="1.8"/><circle cx="18" cy="10" r="1.8"/></svg>',
+  odor: '<svg viewBox="0 0 24 24"><path d="M3 9h11a3 3 0 1 0-3-3M3 13h15a3 3 0 1 1-3 3M3 17h6"/></svg>',
+  glass: '<svg viewBox="0 0 24 24"><path d="M3 17l3-10h12l3 10z"/><path d="M12 9.5c1.5 2 2.4 3.1 2.4 4.2a2.4 2.4 0 0 1-4.8 0c0-1.1.9-2.2 2.4-4.2z"/></svg>',
+};
 /* ------------------------------------------------------------------ data */
 const SIZES = ["Car / small SUV", "Truck / lifted truck", "RV / boat"];
 const SIZE_SUB = ["Sedans, coupes, crossovers", "Half-tons, HDs, duallies", "Motorhomes, trailers, boats"];
@@ -37,8 +44,8 @@ const PLANS = [
   { id: "biweekly", n: "Every 2 weeks", card: "black", cardName: "Black", no: "4058  6160  0058  0024", f: "Keeps a coating performing", per: [75, 97, 175], visits: 2, save: "Save 12% per wash",
     li: ["2 Signature Washes a month", "Wheels, wells & tires every visit", "Spot-free rinse & blow-dry", "Ceramic topper every visit", "Interior vacuum & wipe"] },
 ];
-const NFC = '<svg class="tc__nfc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8.5 7.5a6 6 0 0 1 0 9M12 5a9.5 9.5 0 0 1 0 14M15.5 2.8a13 13 0 0 1 0 18.4"/></svg>';
-const ADDS = [["Engine bay detail", 75], ["Undercarriage & frame", 79], ["Headlight restoration", 79], ["Pet hair removal", 49], ["Odor elimination", 59], ["Glass coating", 99]];
+const ADDS = [["Engine bay detail", 75, "engine", "Degreased, rinsed & dressed"], ["Undercarriage & frame", 79, "under", "Frame, axles & wells blasted"], ["Headlight restoration", 79, "light", "Cloudy lenses back to clear"],
+  ["Pet hair removal", 49, "pet", "Every seat & carpet fiber"], ["Odor elimination", 59, "odor", "Smoke, pets & spills, gone"], ["Glass coating", 99, "glass", "Rain beads right off"]];
 const CLIPS = [
   ["Shine Supply", "Cool Guy wheel cleaner", "Breaks brake dust down in the barrel", "step-wheels"],
   ["Koch-Chemie", "Gentle Snow Foam", "Thick prewash that lifts the grit", "step-foam"],
@@ -87,7 +94,7 @@ const QUIET = ["El Mirage", "Sun City"];
 const TIMES = ["8 AM", "10 AM", "12 PM", "2 PM", "4 PM"];
 
 /* ------------------------------------------------------------------ state */
-const S = { size: 0, svc: null, day: null, time: null, month: (() => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), 1); })() };
+const S = { size: 0, svc: null, day: null, time: null, adds: new Set(), month: (() => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), 1); })() };
 const svcItem = id => PKGS.find(p => p.id === id) || PLANS.find(p => p.id === id);
 const isPlan = id => PLANS.some(p => p.id === id);
 const svcName = id => { const it = svcItem(id); return it ? (isPlan(id) ? `${it.n} plan` : it.n) : ""; };
@@ -148,7 +155,8 @@ function initVan() {
   $(".vsize").addEventListener("click", e => { const b = e.target.closest("button"); if (b) setSize(+b.dataset.size); });
   renderDoors();
   new IntersectionObserver(([en], o) => { if (en.isIntersecting) { $(".van").classList.add("is-open"); o.disconnect(); } }, { threshold: .2 }).observe($(".vanbody"));
-  $(".extras__list").innerHTML = ADDS.map(([n, p]) => `<li>${n}<b>+${money(p)}</b></li>`).join("");
+  $(".extras__list").innerHTML = ADDS.map(([n, p, ic, d]) => `<button type="button" class="addon" data-add="${esc(n)}" aria-pressed="false"><span class="addon__ic">${AIC[ic]}</span><span class="addon__t"><b>${n}</b><small>${d}</small></span><span class="addon__p">+${money(p)}</span><span class="addon__plus" aria-hidden="true"></span></button>`).join("");
+  $(".extras__list").addEventListener("click", e => { const b = e.target.closest(".addon"); if (!b) return; toggleAdd(b.dataset.add); toast(S.adds.has(b.dataset.add) ? `${b.dataset.add} added to your booking.` : `${b.dataset.add} removed.`); });
 }
 function setSize(i) {
   S.size = i;
@@ -163,9 +171,9 @@ function renderTiers() {
     return `<article class="tier${p.hi ? " tier--hi" : ""}">
       ${p.hi ? `<span class="tier__flag">${p.hi}</span>` : ""}
       <div class="tier__card tier__card--${p.card}" aria-hidden="true">
-        <img class="tc__logo" src="assets/brand/logo-wordmark.png" alt="" width="1025" height="391"><span class="tc__tier">${p.cardName}<br>${p.n}</span>
-        <span class="tc__chip"></span>${NFC}<span class="tc__no">${p.no}</span>
-        <span class="tc__name"><small>Club member</small>Your name here</span><span class="tc__thru"><small>Member since</small>2026</span></div>
+        <img class="tc__logo" src="assets/brand/logo-wordmark.png" alt="" width="1025" height="391"><span class="tc__tier">${p.cardName}</span>
+        <span class="tc__chip"></span><span class="tc__club">Maintenance club</span>
+        <span class="tc__name"><small>Member</small>Your name here</span><span class="tc__plan"><small>Plan</small>${p.n}</span></div>
       <h3 class="tier__n">${p.n}</h3><p class="tier__f">${p.f}</p>
       <p class="tier__p"><b>${money(mo)}</b><span>/ month</span></p>
       <p class="tier__per">${money(per)} per wash <span class="tier__save">${p.save}</span></p>
@@ -182,12 +190,21 @@ function initClub() {
 /* ------------------------------------------------------------------ booking: one box */
 const bx = $(".bx");
 const chip = (name, val, on, inner) => `<label class="chip"><input type="radio" name="${name}" value="${val}" ${on ? "checked" : ""}><span>${inner}</span></label>`;
+function toggleAdd(n, on) {
+  const want = on === undefined ? !S.adds.has(n) : on;
+  want ? S.adds.add(n) : S.adds.delete(n);
+  $$(".addon").forEach(b => b.setAttribute("aria-pressed", String(S.adds.has(b.dataset.add))));
+  $$('input[name="adds"]').forEach(i => i.checked = S.adds.has(i.value));
+  updateSummary();
+}
+const addTotal = () => ADDS.filter(([n]) => S.adds.has(n)).reduce((t, [, p]) => t + p, 0);
 function renderBookOpts() {
   $('[data-name="svc"]').innerHTML = PKGS.map(p => chip("svc", p.id, S.svc === p.id, `<b>${p.n}</b><i>${p.t}</i><em>${money(p.p[S.size])}</em>`)).join("");
   let plan = $(".chips--plan");
   if (!plan) { $('[data-name="svc"]').insertAdjacentHTML("afterend", `<p class="bq__sub">Or join a maintenance plan</p><div class="chips chips--plan"></div>`); plan = $(".chips--plan"); }
   plan.innerHTML = PLANS.map(p => chip("svc", p.id, S.svc === p.id, `<b>${p.n}</b><em>${money(p.per[S.size] * p.visits)}<small style="font:600 12px var(--f-body)">/mo</small></em>`)).join("");
   $('[data-name="size"]').innerHTML = SIZES.map((s, i) => chip("size", i, S.size === i, `<b>${s}</b>`)).join("");
+  $('[data-name="adds"]').innerHTML = ADDS.map(([n, p, ic]) => `<label class="chip chip--add"><input type="checkbox" name="adds" value="${esc(n)}" ${S.adds.has(n) ? "checked" : ""}><span>${AIC[ic]}<b>${n}</b><em>+${money(p)}</em></span></label>`).join("");
 }
 const dayKey = dt => `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}-${String(dt.getDate()).padStart(2, "0")}`;
 function renderCal() {
@@ -208,9 +225,11 @@ function updateSummary() {
   const set = (k, v, fb) => { const el = $(`[data-sum="${k}"]`); el.textContent = v || fb; el.classList.toggle("is-set", !!v); };
   set("svc", it ? svcName(S.svc) : "", "Pick one");
   set("size", SIZES[S.size], "—");
+  set("adds", S.adds.size ? [...S.adds].join(", ") : "", "None");
   set("when", whenText() + (S.day && !S.time ? " · pick a time" : ""), "Pick a day");
   const base = it ? (plan ? it.per[S.size] * it.visits : it.p[S.size]) : 0;
-  $('[data-sum="total"]').innerHTML = base == null ? "Quote" : money(base) + (plan ? " <small>/mo</small>" : "");
+  $('[data-sum="total"]').innerHTML = base == null ? "Quote" : money(base + addTotal()) + (plan ? ` <small>${S.adds.size ? "first month" : "/mo"}</small>` : "");
+  const sd = $(".cal__sel"); if (sd) sd.innerHTML = S.day ? `<b>${new Date(S.day + "T12:00").toLocaleDateString("en-US", { weekday: "long" })}</b><span>${new Date(S.day + "T12:00").toLocaleDateString("en-US", { month: "long", day: "numeric" })}${S.time ? " · " + S.time : " · pick a time"}</span>` : `<b>Pick a day</b><span>Mon–Sat, arrival windows below</span>`;
 }
 function initBooking() {
   renderBookOpts(); renderCal();
@@ -220,6 +239,7 @@ function initBooking() {
     if (t.name === "svc") S.svc = t.value;
     if (t.name === "size") return setSize(+t.value);
     if (t.name === "time") S.time = t.value;
+    if (t.name === "adds") return toggleAdd(t.value, t.checked);
     updateSummary();
   });
   bx.addEventListener("input", e => e.target.classList && e.target.classList.remove("is-bad"));
@@ -239,15 +259,15 @@ function initBooking() {
     [["addr", v => v.trim().length > 4], ["name", v => v.trim().length > 1], ["phone", v => (v.match(/\d/g) || []).length >= 10]].forEach(([n, t]) => { const no = !t(f[n].value); f[n].classList.toggle("is-bad", no); if (no && !bad) bad = f[n]; });
     if (msg) return toast(msg);
     if (bad) { toast("Add your address, name and mobile so Logan can confirm."); return bad.focus(); }
-    $(".bx__donesum").innerHTML = [["Package", svcName(S.svc)], ["Vehicle", SIZES[S.size]], ["When", whenText()], ["Where", f.addr.value]].map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("");
+    $(".bx__donesum").innerHTML = [["Package", svcName(S.svc)], ["Vehicle", SIZES[S.size]], ...(S.adds.size ? [["Add-ons", [...S.adds].join(", ")]] : []), ["When", whenText()], ["Where", f.addr.value]].map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("");
     $(".bx__done").hidden = false;
   });
-  $(".bx__again").addEventListener("click", () => { $(".bx__done").hidden = true; bx.reset(); S.svc = S.day = S.time = null; renderBookOpts(); renderCal(); updateSummary(); });
+  $(".bx__again").addEventListener("click", () => { $(".bx__done").hidden = true; bx.reset(); S.svc = S.day = S.time = null; S.adds.clear(); toggleAdd("", false); renderBookOpts(); renderCal(); updateSummary(); });
   updateSummary();
 }
 function summaryText() {
   const f = bx.elements;
-  return [`Hey Logan, I booked on your site:`, `Package: ${svcName(S.svc)}`, `Vehicle: ${SIZES[S.size]}`, `When: ${whenText()}`, `Address: ${f.addr.value}`,
+  return [`Hey Logan, I booked on your site:`, `Package: ${svcName(S.svc)}`, `Vehicle: ${SIZES[S.size]}`, S.adds.size ? `Add-ons: ${[...S.adds].join(", ")}` : "", `When: ${whenText()}`, `Address: ${f.addr.value}`,
     f.notes.value ? `Notes: ${f.notes.value}` : "", `Name: ${f.name.value}`, `Phone: ${f.phone.value}`].filter(Boolean).join("\n");
 }
 
@@ -311,10 +331,10 @@ function initMap() {
   map = L.map("map", { zoomControl: true, scrollWheelZoom: false, attributionControl: true });
   const ESRI = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
   L.tileLayer(ESRI + "World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16, attribution: "Tiles &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors" }).addTo(map);
-  L.circle(BASE, { radius: 35 * 1609, color: "#ff3b52", weight: 1.5, opacity: .6, fillColor: "#ff2a48", fillOpacity: .05, dashArray: "5 7" }).addTo(map);
   const markers = CITIES.map(([n, lat, lng, base]) => L.marker([lat, lng], { icon: L.divIcon({ className: "", html: `<span class="pin${base ? " pin--base" : ""}"><i></i></span>`, iconSize: [22, 22], iconAnchor: [11, 11] }), title: n })
     .addTo(map).bindTooltip(base ? `${n} · home base` : n, { className: "city-lbl" + (base ? " is-base" : ""), direction: LEFT.includes(n) ? "left" : "right", offset: [LEFT.includes(n) ? -10 : 10, 0], permanent: !QUIET.includes(n) }));
   const fit = () => { const b = L.latLngBounds(CITIES.map(c => [c[1], c[2]])); const panel = innerWidth > 760 ? Math.min(620, innerWidth * .4) : 0; map.fitBounds(b, { paddingTopLeft: [panel + 40, 80], paddingBottomRight: [90, 80] }); };
+  initHopper(markers);
   fit(); addEventListener("resize", () => { clearTimeout(fit._t); fit._t = setTimeout(fit, 200); });
   list.addEventListener("click", e => {
     const b = e.target.closest("button"); if (!b) return; const i = +b.dataset.i;
@@ -322,6 +342,30 @@ function initMap() {
     map.flyTo([CITIES[i][1], CITIES[i][2]], 12, { duration: .8 });
     if (innerWidth <= 760) $("#map").scrollIntoView({ behavior: "smooth", block: "center" });
   });
+}
+function initHopper(markers) {
+  if (REDUCED) return;
+  const left = CITIES.map((_, i) => i), order = [0]; left.splice(0, 1);
+  while (left.length) { const c = CITIES[order[order.length - 1]]; let bi = 0, bd = 1e9; left.forEach((j, k) => { const d = miles([c[1], c[2]], [CITIES[j][1], CITIES[j][2]]); if (d < bd) { bd = d; bi = k; } }); order.push(left.splice(bi, 1)[0]); }
+  const hop = L.marker([CITIES[0][1], CITIES[0][2]], { icon: L.divIcon({ className: "", html: '<span class="hop"><span class="hop__b"><img src="assets/brand/logo-1080.jpg" alt=""></span><i class="hop__sh"></i></span>', iconSize: [48, 48], iconAnchor: [24, 44] }), zIndexOffset: 1000, interactive: false, keyboard: false }).addTo(map);
+  const el = () => hop.getElement() && hop.getElement().querySelector(".hop__b");
+  let k = 0, visible = false;
+  new IntersectionObserver(([en]) => visible = en.isIntersecting).observe($("#map"));
+  const step = () => {
+    if (!visible || document.hidden) return setTimeout(step, 600);
+    const a = CITIES[order[k]], b = CITIES[order[(k + 1) % order.length]], t0 = performance.now(), dur = 1000;
+    const frame = now => {
+      const t = Math.min(1, (now - t0) / dur), e = t < .5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2;
+      hop.setLatLng([a[1] + (b[1] - a[1]) * e, a[2] + (b[2] - a[2]) * e]);
+      const b2 = el(); if (b2) b2.style.transform = `translateY(${-Math.sin(Math.PI * t) * 46}px)`;
+      if (t < 1) return requestAnimationFrame(frame);
+      k = (k + 1) % order.length;
+      const pin = markers[order[k]].getElement(); if (pin) { pin.classList.remove("is-land"); void pin.offsetWidth; pin.classList.add("is-land"); }
+      setTimeout(step, 700);
+    };
+    requestAnimationFrame(frame);
+  };
+  setTimeout(step, 900);
 }
 function initCheck() {
   const form = $(".check"), out = $(".check__out");
@@ -356,6 +400,9 @@ function initCheck() {
 /* ------------------------------------------------------------------ reveal + mobile bar */
 function initReveal() {
   $$(".sec-head, .feat, .bw, .igx").forEach(el => el.classList.add("rv"));
+  const FIC = { spray: '<svg viewBox="0 0 24 24"><path d="M3 15h7l2-2h4"/><path d="M16 13l5-4M16 13h5M16 13l5 4"/><path d="M6 15v5h3v-5"/></svg>', truck: '<svg viewBox="0 0 24 24"><path d="M2 16V7h11v9M13 10h4.5l3.5 3.5V16h-2M6 16h7"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>', bolt: '<svg viewBox="0 0 24 24"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></svg>', hand: '<svg viewBox="0 0 24 24"><path d="M14.5 4.5a4.5 4.5 0 0 0-5.6 5.6L3 16l4 4 5.9-5.9a4.5 4.5 0 0 0 5.6-5.6l-2.8 2.8-2.6-.6-.6-2.6z"/></svg>' };
+  document.querySelectorAll(".facts li").forEach(li => { li.querySelector("i").innerHTML = FIC[li.dataset.ic] || ""; });
+  const facts = $(".facts"); if (facts) new IntersectionObserver(([en], o) => { if (en.isIntersecting) { facts.classList.add("is-in"); o.disconnect(); } }, { threshold: .3 }).observe(facts);
   if (REDUCED) { $$(".rv").forEach(el => el.classList.add("is-in")); return; }
   const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } }), { rootMargin: "0px 0px -8% 0px" });
   $$(".rv:not(.is-in)").forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 70}ms`; io.observe(el); });

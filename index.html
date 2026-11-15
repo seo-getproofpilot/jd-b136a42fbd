@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,100,400..800&family=JetBrains+Mono:wght@500;700&family=Knewave&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=13">
+<link rel="stylesheet" href="assets/site.css?v=14">
 <link rel="icon" href="assets/brand/logo-1080.jpg">
 <link rel="preload" as="image" href="assets/brand/logo-full.png">
 <script>try{if(sessionStorage.getItem('jd-intro'))document.documentElement.classList.add('no-intro')}catch(e){}</script>
@@ -92,8 +92,12 @@
   </div>
   <div class="wrap">
     <div class="extras">
-      <p class="extras__k">Add to any package</p>
-      <ul class="extras__list"></ul>
+      <div class="extras__head">
+        <p class="eyebrow">Add-ons</p>
+        <h3 class="extras__h">Stack these on <span class="tag">any package.</span></h3>
+        <p class="extras__sub">Tap one to add it to your booking.</p>
+      </div>
+      <div class="extras__list"></div>
     </div>
   </div>
 </section>
@@ -105,7 +109,7 @@
     <div class="club__top">
       <div class="club__pitch">
         <p class="eyebrow eyebrow--light">Maintenance plans</p>
-        <h2 class="club__h">Never drive <span class="tag">a dirty truck again.</span></h2>
+        <h2 class="club__h">Never drive <span class="tag">dirty again.</span></h2>
         <p class="club__lede">Join the club and your vehicle gets the full Signature Wash on a set schedule, for less than a one-time wash. Same day, same window, every visit.</p>
         <ul class="club__perks">
           <li><b>Up to 19% less</b> per wash than booking one-time</li>
@@ -119,8 +123,8 @@
           <img src="assets/brand/logo-wordmark.png" alt="" width="1025" height="391" class="mcard__logo">
           <span class="mcard__chip"></span>
           <span class="mcard__k">Maintenance club</span>
-          <span class="mcard__name">Member since 2026</span>
-          <span class="mcard__no">JD &nbsp;0058 &nbsp;6160 &nbsp;602</span>
+          <span class="mcard__name"><small>Member</small>Your name here</span>
+          <span class="mcard__no"><small>Member since</small>2026</span>
         </div>
       </div>
     </div>
@@ -152,6 +156,8 @@
           <div class="bq">
             <p class="bq__k"><span>2</span>What are you driving?</p>
             <div class="chips" data-name="size"></div>
+            <p class="bq__sub">Add-ons <i>(optional)</i></p>
+            <div class="chips chips--add" data-name="adds"></div>
           </div>
           <div class="bq bq--last">
             <p class="bq__k"><span>4</span>Where and who?</p>
@@ -167,9 +173,11 @@
           <div class="bq">
             <p class="bq__k"><span>3</span>Pick a day &amp; time</p>
             <div class="cal">
+              <span class="cal__rings" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
               <div class="cal__head"><button type="button" class="cal__nav" data-cal="-1" aria-label="Previous month">‹</button><b class="cal__month"></b><button type="button" class="cal__nav" data-cal="1" aria-label="Next month">›</button></div>
               <div class="cal__dow"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>
               <div class="cal__grid"></div>
+              <div class="cal__sel" aria-live="polite"></div>
             </div>
             <div class="chips chips--time" data-name="time"></div>
           </div>
@@ -180,6 +188,7 @@
         <dl class="bx__sum">
           <div><dt>Package</dt><dd data-sum="svc">Pick one</dd></div>
           <div><dt>Vehicle</dt><dd data-sum="size">—</dd></div>
+          <div><dt>Add-ons</dt><dd data-sum="adds">None</dd></div>
           <div><dt>When</dt><dd data-sum="when">Pick a day</dd></div>
           <div class="bx__tot"><dt>Total</dt><dd data-sum="total">$0</dd></div>
         </dl>
@@ -211,14 +220,14 @@
     <div class="story__copy">
       <p class="eyebrow">Meet the owner</p>
       <h2 class="h2">Meet Logan. <span class="tag">The guy who shows up.</span></h2>
-      <p class="story__p">Logan started Jasperson's a little over three years ago with a pressure washer, cleaning concrete for homes and businesses around Phoenix. A month or two in, a landscaping company hired him to keep their trucks clean, and that's when it clicked: detailing was what he was meant to do.</p>
-      <p class="story__p">About a year later he quit his full-time job and went all in. He'll tell you it was a rough and rocky road, and that he wouldn't be here without his parents and family. Today he still does every job himself.</p>
-      <ol class="story__line">
-        <li><b>Pressure washing</b><span>Concrete cleaning for homes and businesses</span></li>
-        <li><b>First detailing account</b><span>Work trucks for a Phoenix landscaping company</span></li>
-        <li><b>All in</b><span>Quit the full-time job to detail every day</span></li>
-        <li><b>Today</b><span>A full mobile rig, Ferraris to duallies</span></li>
-      </ol>
+      <p class="story__p">Logan started Jasperson's a little over three years ago with a pressure washer, cleaning concrete for homes and businesses. A month or two in, a Phoenix landscaping company hired him to detail their work trucks, and he saw he had a real future in detailing.</p>
+      <p class="story__p">He'll tell you the road here was rough and rocky, and that he wouldn't be where he is without his parents and family.</p>
+      <ul class="facts">
+        <li data-ic="spray"><i></i><b>Started with concrete</b><span>Pressure washing for homes and businesses</span></li>
+        <li data-ic="truck"><i></i><b>First detailing client</b><span>A Phoenix landscaping company's work trucks</span></li>
+        <li data-ic="bolt"><i></i><b>Went full-time</b><span>Quit his day job about a year in</span></li>
+        <li data-ic="hand"><i></i><b>Owner-operated</b><span>Logan is the one at your vehicle, every job</span></li>
+      </ul>
       <blockquote class="story__q"><p>“Stay focused, do good work, be an honest worker, and the work will come your way.”</p><cite>Logan, owner</cite></blockquote>
     </div>
   </div>
@@ -229,8 +238,8 @@
   <div class="wrap wrap--wide">
     <div class="sec-head">
       <div>
-        <p class="eyebrow">Brands we trust</p>
-        <h2 class="h2">The products <span class="tag">on the truck.</span></h2>
+        <p class="eyebrow">Pro products only</p>
+        <h2 class="h2">The products <span class="tag">we trust.</span></h2>
       </div>
       <p class="sec-head__lede">“Cheap products do not work.” Every wash uses the same pro lineup.</p>
     </div>
@@ -355,6 +364,6 @@
 <div class="toast" role="status" aria-live="polite"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin defer></script>
-<script src="assets/site.js?v=13" defer></script>
+<script src="assets/site.js?v=14" defer></script>
 </body>
 </html>
