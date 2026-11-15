@@ -19,33 +19,34 @@ const ICONS = [
   '<svg viewBox="0 0 96 50"><path d="M6 29v-8h34V9h17c2 0 3.6 1 4.6 2.6L68 21h17c2 0 3 1 3 3v5"/><path d="M45 12.5h10.5L61 21H45z"/><path d="M40 21v8M6 29h82"/><path class="ic-a" d="M44 5h16" stroke-width="3.4"/><circle cx="23" cy="37" r="9"/><circle cx="71" cy="37" r="9"/><circle class="ic-a" cx="23" cy="37" r="3.4"/><circle class="ic-a" cx="71" cy="37" r="3.4"/><path d="M23 29v-1M71 29v-1M33 33h28"/></svg>',
   '<svg viewBox="0 0 96 50"><path d="M3 33V12c0-2 1.5-3.5 3.5-3.5H49c3 0 5.4 1.4 7 4L62 23v10"/><path d="M8 14h11v7H8zM24 14h14v6H24zM51 13.5l6.5 9.5H51z"/><circle cx="15" cy="35" r="6"/><circle cx="49" cy="35" r="6"/><path d="M21 34h22M62 31h6"/><path class="ic-a" d="M67 27h27c-1.6 4.2-4.4 7-8.5 7H72z"/><path d="M74 27l4-6h7"/><path d="M68 38h20"/><circle cx="80" cy="41" r="3"/></svg>',
 ];
+/* add-on icons: Tabler Icons (MIT) + a custom headlight in the same style */
 const AIC = {
-  engine: '<svg viewBox="0 0 24 24"><path d="M3 10h3V8h11l2.5 3H21v5h-1.5L17 19H8l-2-2H3z"/><path d="M9 8V5h5v3M3 12v3"/></svg>',
-  under: '<svg viewBox="0 0 24 24"><path d="M3 10h18M5 10l2-4h10l2 4"/><circle cx="7" cy="12" r="1.7"/><circle cx="17" cy="12" r="1.7"/><path d="M7 16v4M12 15v5M17 16v4"/></svg>',
-  light: '<svg viewBox="0 0 24 24"><path d="M11 6C7 6 4 8.7 4 12s3 6 7 6h1V6z"/><path d="M15.5 8l5-1.5M15.5 12H21M15.5 16l5 1.5"/></svg>',
-  pet: '<svg viewBox="0 0 24 24"><path d="M12 13c-3 0-5.5 3-5.5 5 0 1.5 1.2 2 2.5 2 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.3 0 2.5-.5 2.5-2 0-2-2.5-5-5.5-5z"/><circle cx="6" cy="10" r="1.8"/><circle cx="9.5" cy="5.8" r="1.8"/><circle cx="14.5" cy="5.8" r="1.8"/><circle cx="18" cy="10" r="1.8"/></svg>',
-  odor: '<svg viewBox="0 0 24 24"><path d="M3 9h11a3 3 0 1 0-3-3M3 13h15a3 3 0 1 1-3 3M3 17h6"/></svg>',
-  glass: '<svg viewBox="0 0 24 24"><path d="M3 17l3-10h12l3 10z"/><path d="M12 9.5c1.5 2 2.4 3.1 2.4 4.2a2.4 2.4 0 0 1-4.8 0c0-1.1.9-2.2 2.4-4.2z"/></svg>',
+  engine: '<svg viewBox="0 0 24 24"><path d="M3 10v6"/><path d="M12 5v3"/><path d="M10 5h4"/><path d="M5 13h-2"/><path d="M6 10h2l2 -2h3.382a1 1 0 0 1 .894 .553l1.448 2.894a1 1 0 0 0 .894 .553h1.382v-2h2a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-2v-2h-3v2a1 1 0 0 1 -1 1h-3.465a1 1 0 0 1 -.832 -.445l-1.703 -2.555h-2v-6z"/></svg>',
+  under: '<svg viewBox="0 0 24 24"><path d="M5 3m0 2a2 2 0 0 1 2 -2h0a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h0a2 2 0 0 1 -2 -2z"/><path d="M5 15m0 2a2 2 0 0 1 2 -2h0a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h0a2 2 0 0 1 -2 -2z"/><path d="M15 3m0 2a2 2 0 0 1 2 -2h0a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h0a2 2 0 0 1 -2 -2z"/><path d="M15 15m0 2a2 2 0 0 1 2 -2h0a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h0a2 2 0 0 1 -2 -2z"/><path d="M9 18h6"/><path d="M9 6h6"/><path d="M12 6.5v-.5v12"/></svg>',
+  light: '<svg viewBox="0 0 24 24"><path d="M4 7h3.5a5 5 0 0 1 0 10H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><path d="M15 8l5-1.5"/><path d="M15 12h6"/><path d="M15 16l5 1.5"/></svg>',
+  pet: '<svg viewBox="0 0 24 24"><path d="M14.7 13.5c-1.1 -2 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538z"/><path d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052z"/><path d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267z"/><path d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267z"/><path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082z"/></svg>',
+  odor: '<svg viewBox="0 0 24 24"><path d="M4 10m0 2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2z"/><path d="M6 10v-4a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v4"/><path d="M15 7h.01"/><path d="M18 9h.01"/><path d="M18 5h.01"/><path d="M21 3h.01"/><path d="M21 7h.01"/><path d="M21 11h.01"/><path d="M10 7h1"/></svg>',
+  glass: '<svg viewBox="0 0 24 24"><path d="M12 20m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M3 11l5.5 5.5a5 5 0 0 1 7 0l5.5 -5.5a12 12 0 0 0 -18 0"/><path d="M12 20l0 -14"/><path d="M4 6a4 4 0 0 1 .4 -1.8"/><path d="M7 2.1a4 4 0 0 1 2 0"/><path d="M12 6a4 4 0 0 0 -.4 -1.8"/><path d="M12 6a4 4 0 0 1 .4 -1.8"/><path d="M15 2.1a4 4 0 0 1 2 0"/><path d="M20 6a4 4 0 0 0 -.4 -1.8"/></svg>'
 };
 /* ------------------------------------------------------------------ data */
 const SIZES = ["Car / small SUV", "Truck / lifted truck", "RV / boat"];
 const SIZE_SUB = ["Sedans, coupes, crossovers", "Half-tons, HDs, duallies", "Motorhomes, trailers, boats"];
 const PKGS = [
   { id: "wash", n: "Signature Wash", lead: "Keeps a clean vehicle clean", t: "1.5–2 hrs", p: [85, 110, 199], li: ["Wheels, barrels & tires", "Wheel wells degreased", "Snow-foam prewash", "Hand contact wash", "Spot-free rinse", "Touchless blow-dry", "Ceramic spray topper", "Interior vacuum & wipe"] },
-  { id: "interior", n: "Interior Deep Clean", lead: "The inside, reset", t: "2.5–3.5 hrs", p: [159, 189, 249], li: ["Deep vacuum, under seats", "Carpets shampooed", "Mats extracted", "Leather conditioned", "Plastics & panels dressed", "Vents & cupholders", "Odor treatment", "Glass inside & out"] },
-  { id: "full", n: "Full Detail", lead: "Top to bottom, inside and out", t: "4–6 hrs", hi: "Most common", p: [249, 309, 449], li: ["Full Signature Wash", "Full Interior Deep Clean", "Paint sealant", "Door jambs", "Exterior trim dressed", "Engine bay wipe-down", "Glass inside & out", "Final walk-around"] },
-  { id: "ceramic", n: "Ceramic Coating", lead: "Years of protection", t: "1–2 days", p: [899, 1149, null], li: ["Decon wash, iron & clay", "Machine polish", "Ceramic on paint", "Wheel faces coated", "Glass coated", "Trim protected", "Aftercare walkthrough", "First maintenance wash"] },
+  { id: "interior", n: "Interior Deep Clean", lead: "Inside only", t: "2.5–3.5 hrs", p: [159, 189, 249], li: ["Deep vacuum, under seats", "Carpets shampooed", "Mats extracted", "Leather conditioned", "Plastics & panels dressed", "Vents & cupholders", "Odor treatment", "Glass inside & out"] },
+  { id: "full", n: "Full Detail", lead: "Inside and out, top to bottom", t: "4–6 hrs", hi: "Most common", p: [249, 309, 449], li: ["Full Signature Wash", "Full Interior Deep Clean", "Paint sealant", "Door jambs", "Exterior trim dressed", "Engine bay wipe-down", "Glass inside & out", "Final walk-around"] },
+  { id: "ceramic", n: "Ceramic Coating", lead: "Long-term paint protection", t: "1–2 days", p: [899, 1149, null], li: ["Decon wash, iron & clay", "Machine polish", "Ceramic on paint", "Wheel faces coated", "Glass coated", "Trim protected", "Aftercare walkthrough", "First maintenance wash"] },
 ];
 const PLANS = [
-  { id: "monthly", n: "Monthly", card: "silver", cardName: "Silver", no: "4058  6160  0058  0112", f: "Weekend trucks & garage cars", per: [109, 135, 219], visits: 1, save: "Full interior pass included",
+  { id: "monthly", n: "Monthly", card: "silver", cardName: "Silver", no: "4058  6160  0058  0112", f: "Weekend trucks & garage cars", per: [109, 135, 219], visits: 1, save: "",
     li: ["1 visit a month", "Full Signature Wash", "Full interior vacuum & mats", "Plastics cleaned & dressed", "Glass inside & out"], plus: true },
   { id: "weekly", n: "Weekly", card: "red", cardName: "Red", no: "4058  6160  0058  0001", f: "Daily drivers & work trucks", hi: "Best of the best", per: [69, 89, 159], visits: 4, save: "Save 19% per wash",
-    li: ["4 Signature Washes a month", "Wheels, wells & tires every visit", "Spot-free rinse & blow-dry", "Ceramic topper every visit", "Interior vacuum & wipe", "Never a dirty week"] },
+    li: ["4 Signature Washes a month", "Wheels, wells & tires every visit", "Spot-free rinse & blow-dry", "Ceramic topper every visit", "Interior vacuum & wipe"] },
   { id: "biweekly", n: "Every 2 weeks", card: "black", cardName: "Black", no: "4058  6160  0058  0024", f: "Keeps a coating performing", per: [75, 97, 175], visits: 2, save: "Save 12% per wash",
     li: ["2 Signature Washes a month", "Wheels, wells & tires every visit", "Spot-free rinse & blow-dry", "Ceramic topper every visit", "Interior vacuum & wipe"] },
 ];
 const ADDS = [["Engine bay detail", 75, "engine", "Degreased, rinsed & dressed"], ["Undercarriage & frame", 79, "under", "Frame, axles & wells blasted"], ["Headlight restoration", 79, "light", "Cloudy lenses back to clear"],
-  ["Pet hair removal", 49, "pet", "Every seat & carpet fiber"], ["Odor elimination", 59, "odor", "Smoke, pets & spills, gone"], ["Glass coating", 99, "glass", "Rain beads right off"]];
+  ["Pet hair removal", 49, "pet", "Seats, carpets & mats"], ["Odor elimination", 59, "odor", "Smoke, pet & spill odors"], ["Glass coating", 99, "glass", "Water-repellent coat on the glass"]];
 const CLIPS = [
   ["Shine Supply", "Cool Guy wheel cleaner", "Breaks brake dust down in the barrel", "step-wheels"],
   ["Koch-Chemie", "Gentle Snow Foam", "Thick prewash that lifts the grit", "step-foam"],
@@ -176,7 +177,7 @@ function renderTiers() {
         <span class="tc__name"><small>Member</small>Your name here</span><span class="tc__plan"><small>Plan</small>${p.n}</span></div>
       <h3 class="tier__n">${p.n}</h3><p class="tier__f">${p.f}</p>
       <p class="tier__p"><b>${money(mo)}</b><span>/ month</span></p>
-      <p class="tier__per">${money(per)} per wash <span class="tier__save">${p.save}</span></p>
+      <p class="tier__per">${money(per)} per wash${p.save ? ` <span class="tier__save">${p.save}</span>` : ""}</p>
       <ul>${p.li.map((l, j) => `<li class="${p.plus && j >= 2 ? "is-plus" : ""}">${CHECK}<span>${l}</span></li>`).join("")}</ul>
       <button type="button" class="btn ${p.hi ? "btn--white" : "btn--ghost"} btn--block btn--lg" data-book="${p.id}">Join the ${p.n.toLowerCase()} plan</button></article>`;
   }).join("");
@@ -229,7 +230,7 @@ function updateSummary() {
   set("when", whenText() + (S.day && !S.time ? " · pick a time" : ""), "Pick a day");
   const base = it ? (plan ? it.per[S.size] * it.visits : it.p[S.size]) : 0;
   $('[data-sum="total"]').innerHTML = base == null ? "Quote" : money(base + addTotal()) + (plan ? ` <small>${S.adds.size ? "first month" : "/mo"}</small>` : "");
-  const sd = $(".cal__sel"); if (sd) sd.innerHTML = S.day ? `<b>${new Date(S.day + "T12:00").toLocaleDateString("en-US", { weekday: "long" })}</b><span>${new Date(S.day + "T12:00").toLocaleDateString("en-US", { month: "long", day: "numeric" })}${S.time ? " · " + S.time : " · pick a time"}</span>` : `<b>Pick a day</b><span>Mon–Sat, arrival windows below</span>`;
+  const sd = $(".cal__sel"); if (sd) sd.innerHTML = S.day ? `<b>${new Date(S.day + "T12:00").toLocaleDateString("en-US", { weekday: "long" })}</b><span>${new Date(S.day + "T12:00").toLocaleDateString("en-US", { month: "long", day: "numeric" })}${S.time ? " · " + S.time : " · pick a time"}</span>` : `<b>Pick a day</b><span>Then pick an arrival time</span>`;
 }
 function initBooking() {
   renderBookOpts(); renderCal();
@@ -439,22 +440,25 @@ function runFoam() {
   const SPR = [sprite(false), sprite(false), sprite(true)];
 
   /* timeline (ms) */
-  const SPRAY = 1250, HOLD = 450, DRIP0 = SPRAY + HOLD, END = 3900;
+  const SPRAY = 1900, HOLD = 250, DRIP0 = SPRAY + HOLD, END = SPRAY + HOLD + 1500;
+  /* only the copy block gets foamed: logo, headline, lede, buttons */
+  const hb = hero.getBoundingClientRect(), cb = $(".hero__copy").getBoundingClientRect(), PAD = mobile ? 10 : 30;
+  const RX = Math.max(0, cb.left - hb.left - PAD), RY = Math.max(0, cb.top - hb.top + (mobile ? 0 : 40)), RW = cb.width + PAD * 2, RH = Math.min(H - RY, cb.height - (mobile ? 0 : 80));
   /* the spray sweeps in three diagonal passes, like a foam cannon working across a panel */
-  const path = t => { const pass = Math.min(2, Math.floor(t * 3)), u = t * 3 - pass, y = H * (.18 + pass * .3), x = pass % 2 ? W * (1.02 - u * 1.04) : W * (-.02 + u * 1.04); return [x, y + Math.sin(u * 9) * 18]; };
-  const SRC = [W * .92, -60];
+  const path = t => { const pass = Math.min(2, Math.floor(t * 3)), u = t * 3 - pass, y = RY + RH * (.18 + pass * .32), x = pass % 2 ? RX + RW * (1 - u) : RX + RW * u; return [x, y + Math.sin(u * 9) * 14]; };
+  const SRC = [RX + RW + 160, RY - 120];
   const colSpeed = Array.from({ length: Math.ceil(W / 34) + 1 }, () => .55 + Math.random() * .9);
   const blobs = [], mist = [];
   let last = 0; const t0 = performance.now();
 
-  let emitted = 0; const STEPS = 84;
+  let emitted = 0; const STEPS = 110;
   const emit = (now, t) => {
-    const [nx, ny] = path(t), count = mobile ? 12 : 20;
+    const [nx, ny] = path(t), count = mobile ? 9 : 14;
     for (let i = 0; i < count; i++) {
-      const tx = nx + (Math.random() - .5) * 240 * scale, ty = ny + (Math.random() - .5) * 200 * scale;
+      const tx = Math.max(RX, Math.min(RX + RW, nx + (Math.random() - .5) * 200 * scale)), ty = Math.max(RY, Math.min(RY + RH, ny + (Math.random() - .5) * 170 * scale));
       blobs.push({ sx: SRC[0], sy: SRC[1], x: tx, y: ty, r: (22 + Math.random() * 46) * scale, born: now, fly: 90 + Math.random() * 90,
         spr: SPR[Math.random() < .14 ? 2 : (Math.random() < .5 ? 0 : 1)], rot: Math.random() * 6.28,
-        drip: DRIP0 + Math.random() * 450 + (1 - ty / H) * 250, vy: 0, dy: 0, sp: colSpeed[Math.max(0, Math.min(colSpeed.length - 1, Math.floor(tx / 34)))], streak: Math.random() < .12 });
+        drip: DRIP0 + Math.random() * 220 + ((ty - RY) / RH) * 120, vy: 0, dy: 0, sp: colSpeed[Math.max(0, Math.min(colSpeed.length - 1, Math.floor(tx / 34)))], streak: Math.random() < .12 });
     }
     for (let i = 0; i < 6; i++) mist.push({ x: SRC[0], y: SRC[1], tx: nx + (Math.random() - .5) * 320, ty: ny + (Math.random() - .5) * 260, born: now, life: 260 + Math.random() * 200 });
   };
@@ -477,9 +481,9 @@ function runFoam() {
       if (flyU >= 1) {
         const settle = Math.min(1, (age - b.fly) / 220); r = b.r * (1 + .12 * settle);
         if (el > b.drip) {
-          b.vy += 1.15 * b.sp * dt / 16; b.dy += b.vy * dt / 16;
+          b.vy += 2.4 * b.sp * dt / 16; b.dy += b.vy * dt / 16;
           y = b.y + b.dy; stretch = 1 + Math.min(1.6, b.vy / 9);
-          a = Math.max(0, 1 - b.dy / (H * .55 + b.r));
+          a = Math.max(0, 1 - b.dy / (RH * .5 + b.r));
           if (b.streak && a > 0) { g.globalAlpha = a * .35; g.fillStyle = "#f4f6f8"; g.fillRect(x - r * .18, b.y, r * .36, b.dy); }
         }
       }
