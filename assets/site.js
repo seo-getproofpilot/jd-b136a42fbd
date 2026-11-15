@@ -90,7 +90,8 @@ const CITIES = [
   ["Litchfield Park", 33.4934, -112.358], ["Laveen", 33.3628, -112.1696], ["Anthem", 33.8673, -112.146], ["New River", 33.9159, -112.1360],
   ["Cave Creek", 33.8334, -111.9507], ["Carefree", 33.8223, -111.9182], ["Fountain Hills", 33.6117, -111.7174],
 ];
-const LEFT = ["Surprise", "Goodyear", "Litchfield Park", "Cave Creek", "Laveen", "New River", "Anthem"];
+const LBL = { "Queen Creek": "left", Surprise: "top", "Litchfield Park": "top", Goodyear: "bottom", "Cave Creek": "left", Laveen: "left", "New River": "left", Anthem: "left" };
+const LOFF = { top: [0, -10], bottom: [0, 10], left: [-10, 0], right: [10, 0] };
 const QUIET = ["El Mirage", "Sun City"];
 const TIMES = ["8 AM", "10 AM", "12 PM", "2 PM", "4 PM"];
 
@@ -156,7 +157,7 @@ function initVan() {
   $(".vsize").addEventListener("click", e => { const b = e.target.closest("button"); if (b) setSize(+b.dataset.size); });
   renderDoors();
   new IntersectionObserver(([en], o) => { if (en.isIntersecting) { $(".van").classList.add("is-open"); o.disconnect(); } }, { threshold: .2 }).observe($(".vanbody"));
-  $(".extras__list").innerHTML = ADDS.map(([n, p, ic, d]) => `<button type="button" class="addon" data-add="${esc(n)}" aria-pressed="false"><span class="addon__ic">${AIC[ic]}</span><span class="addon__t"><b>${n}</b><small>${d}</small></span><span class="addon__p">+${money(p)}</span><span class="addon__plus" aria-hidden="true"></span></button>`).join("");
+  $(".extras__list").innerHTML = ADDS.map(([n, p, ic, d]) => `<button type="button" class="addon" data-add="${esc(n)}" aria-pressed="false"><span class="addon__ic">${AIC[ic]}</span><span class="addon__t"><b>${n}</b><small>${d}</small></span><span class="addon__stub"><span class="addon__p"><i>+</i>${money(p).slice(1) === "Quote" ? "Quote" : "$" + p}</span><span class="addon__cta" aria-hidden="true"></span></span></button>`).join("");
   $(".extras__list").addEventListener("click", e => { const b = e.target.closest(".addon"); if (!b) return; toggleAdd(b.dataset.add); toast(S.adds.has(b.dataset.add) ? `${b.dataset.add} added to your booking.` : `${b.dataset.add} removed.`); });
 }
 function setSize(i) {
@@ -329,12 +330,12 @@ function initMap() {
   const list = $(".cities");
   list.innerHTML = CITIES.map(([n, , , base], i) => `<li${base ? ' class="is-base"' : ""}><button type="button" data-i="${i}" title="Mobile detailing in ${n}">${PIN}${n}</button></li>`).join("");
   if (!window.L) return;
-  map = L.map("map", { zoomControl: true, scrollWheelZoom: false, attributionControl: true });
+  map = L.map("map", { zoomControl: true, scrollWheelZoom: false, zoomSnap: .25, zoomDelta: .5, attributionControl: true });
   const ESRI = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
   L.tileLayer(ESRI + "World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16, attribution: "Tiles &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors" }).addTo(map);
   const markers = CITIES.map(([n, lat, lng, base]) => L.marker([lat, lng], { icon: L.divIcon({ className: "", html: `<span class="pin${base ? " pin--base" : ""}"><i></i></span>`, iconSize: [22, 22], iconAnchor: [11, 11] }), title: n })
-    .addTo(map).bindTooltip(base ? `${n} · home base` : n, { className: "city-lbl" + (base ? " is-base" : ""), direction: LEFT.includes(n) ? "left" : "right", offset: [LEFT.includes(n) ? -10 : 10, 0], permanent: !QUIET.includes(n) }));
-  const fit = () => { const b = L.latLngBounds(CITIES.map(c => [c[1], c[2]])); const panel = innerWidth > 760 ? Math.min(620, innerWidth * .4) : 0; map.fitBounds(b, { paddingTopLeft: [panel + 40 + (panel ? Math.min(140, Math.max(24, innerWidth * .07)) : 0), 80], paddingBottomRight: [90, 80] }); };
+    .addTo(map).bindTooltip(base ? `${n} · home base` : n, { className: "city-lbl" + (base ? " is-base" : ""), direction: LBL[n] || "right", offset: LOFF[LBL[n] || "right"], permanent: !QUIET.includes(n) }));
+  const fit = () => { const b = L.latLngBounds(CITIES.map(c => [c[1], c[2]])); const panel = innerWidth > 760 ? Math.min(620, innerWidth * .4) : 0; map.fitBounds(b, { paddingTopLeft: [panel + 30 + (panel ? Math.min(300, Math.max(24, innerWidth * .14)) : 0), 80], paddingBottomRight: [90, 80] }); };
   initHopper(markers);
   fit(); addEventListener("resize", () => { clearTimeout(fit._t); fit._t = setTimeout(fit, 200); });
   list.addEventListener("click", e => {
@@ -440,7 +441,7 @@ function runFoam() {
   const SPR = [sprite(false), sprite(false), sprite(true)];
 
   /* timeline (ms) */
-  const SPRAY = 1900, HOLD = 250, DRIP0 = SPRAY + HOLD, END = SPRAY + HOLD + 2600;
+  const SPRAY = 1900, HOLD = 250, DRIP0 = SPRAY + HOLD, END = SPRAY + 4200;
   /* only the copy block gets foamed: logo, headline, lede, buttons */
   const hb = hero.getBoundingClientRect(), cb = $(".hero__copy").getBoundingClientRect(), PAD = mobile ? 10 : 30;
   const RX = Math.max(0, cb.left - hb.left - PAD), RY = Math.max(0, cb.top - hb.top + (mobile ? 0 : 40)), RW = cb.width + PAD * 2, RH = Math.min(H - RY, cb.height - (mobile ? 0 : 80));
@@ -458,7 +459,7 @@ function runFoam() {
       const tx = Math.max(RX, Math.min(RX + RW, nx + (Math.random() - .5) * 200 * scale)), ty = Math.max(RY, Math.min(RY + RH, ny + (Math.random() - .5) * 170 * scale));
       blobs.push({ sx: SRC[0], sy: SRC[1], x: tx, y: ty, r: (18 + Math.random() * 34) * scale, born: now, fly: 90 + Math.random() * 90,
         spr: SPR[Math.random() < .14 ? 2 : (Math.random() < .5 ? 0 : 1)], rot: Math.random() * 6.28,
-        drip: DRIP0 + Math.random() * 220 + ((ty - RY) / RH) * 120, vy: 0, dy: 0, sp: colSpeed[Math.max(0, Math.min(colSpeed.length - 1, Math.floor(tx / 34)))], streak: Math.random() < .16 });
+        drip: t * SPRAY + 650 + Math.random() * 550, vy: 0, dy: 0, sp: colSpeed[Math.max(0, Math.min(colSpeed.length - 1, Math.floor(tx / 34)))], streak: Math.random() < .16 });
     }
     for (let i = 0; i < 6; i++) mist.push({ x: SRC[0], y: SRC[1], tx: nx + (Math.random() - .5) * 320, ty: ny + (Math.random() - .5) * 260, born: now, life: 260 + Math.random() * 200 });
   };
@@ -482,9 +483,9 @@ function runFoam() {
         if (el > b.drip) {
           if (!b.run && b.streak) { b.run = 1; runs.push({ x: x + (Math.random() - .5) * r * .6, y0: y + r * .5, y: y + r * .5, v: .4 + Math.random() * .8, w: (2 + Math.random() * 3.2) * scale, born: now }); }
           /* the sheet sags and slides: slow start, then a steady creep, thinning as it goes */
-          b.vy = Math.min(3.2 * b.sp, b.vy + .3 * b.sp * dt / 16); b.dy += b.vy * dt / 16;
+          b.vy = Math.min(2.6 * b.sp, b.vy + .16 * b.sp * dt / 16); b.dy += b.vy * dt / 16;
           y = b.y + b.dy; stretch = 1 + Math.min(.45, b.vy / 7);
-          a = Math.max(0, 1 - (el - b.drip) / (800 + 500 * b.sp)) * Math.max(0, 1 - b.dy / (RH * .7));
+          a = Math.max(0, 1 - (el - b.drip) / (1300 + 500 * b.sp)) * Math.max(0, 1 - b.dy / (RH * .75));
         }
       }
       if (a <= 0.01 || y - r > H) continue;
