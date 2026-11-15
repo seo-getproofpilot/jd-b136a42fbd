@@ -116,7 +116,7 @@ const lazyIO = new IntersectionObserver(es => es.forEach(en => {
 /* ------------------------------------------------------------------ intro, nav, hero */
 function initIntro() {
   const intro = $(".intro"), root = document.documentElement;
-  const finish = () => { document.body.classList.remove("is-intro"); document.body.classList.add("neon-on"); };
+  const finish = () => { document.body.classList.remove("is-intro"); document.body.classList.add("neon-on"); setTimeout(runFoam, 120); };
   if (!intro || root.classList.contains("no-intro") || REDUCED) { intro && intro.remove(); setTimeout(finish, REDUCED ? 0 : 250); return; }
   document.body.classList.add("is-intro");
   const out = () => { if (intro.classList.contains("is-out")) return; intro.classList.add("is-out"); try { sessionStorage.setItem("jd-intro", "1"); } catch (_) {} setTimeout(finish, 450); setTimeout(() => intro.remove(), 900); };
@@ -408,6 +408,93 @@ function initReveal() {
   $$(".rv:not(.is-in)").forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 70}ms`; io.observe(el); });
 }
 function initMbar() { const bar = $(".mbar"); const tog = () => bar.classList.toggle("is-on", scrollY > innerHeight * .7); addEventListener("scroll", tog, { passive: true }); }
+
+
+/* ------------------------------------------------------------------ hero foam: sprayed on, then drips off */
+function runFoam() {
+  const hero = $(".hero"); if (!hero || REDUCED) return;
+  const cv = document.createElement("canvas"); cv.className = "foam"; cv.setAttribute("aria-hidden", "true");
+  hero.appendChild(cv);
+  const dpr = Math.min(devicePixelRatio || 1, 2), W = hero.clientWidth, H = Math.min(hero.clientHeight, innerHeight * 1.05);
+  cv.width = W * dpr; cv.height = H * dpr; cv.style.height = H + "px";
+  const g = cv.getContext("2d"); g.scale(dpr, dpr);
+  const mobile = W < 760, scale = mobile ? .7 : 1;
+
+  /* one foam-blob sprite: soft white puff with a few bubble rims */
+  const sprite = (tint) => {
+    const s = document.createElement("canvas"), n = 128; s.width = s.height = n; const c = s.getContext("2d");
+    const grd = c.createRadialGradient(n * .45, n * .42, n * .05, n / 2, n / 2, n / 2);
+    grd.addColorStop(0, tint ? "rgba(255,236,240,1)" : "rgba(255,255,255,1)");
+    grd.addColorStop(.62, tint ? "rgba(255,214,222,.95)" : "rgba(246,248,250,.95)");
+    grd.addColorStop(1, "rgba(235,238,242,0)");
+    c.fillStyle = grd; c.beginPath(); c.arc(n / 2, n / 2, n / 2, 0, 7); c.fill();
+    for (let i = 0; i < 14; i++) {
+      const a = Math.random() * 7, r = Math.random() * n * .3, br = 3 + Math.random() * 9;
+      c.strokeStyle = "rgba(190,198,208,.55)"; c.lineWidth = 1.2;
+      c.beginPath(); c.arc(n / 2 + Math.cos(a) * r, n / 2 + Math.sin(a) * r, br, 0, 7); c.stroke();
+      c.fillStyle = "rgba(255,255,255,.9)"; c.beginPath(); c.arc(n / 2 + Math.cos(a) * r - br * .35, n / 2 + Math.sin(a) * r - br * .35, br * .3, 0, 7); c.fill();
+    }
+    return s;
+  };
+  const SPR = [sprite(false), sprite(false), sprite(true)];
+
+  /* timeline (ms) */
+  const SPRAY = 1250, HOLD = 450, DRIP0 = SPRAY + HOLD, END = 3900;
+  /* the spray sweeps in three diagonal passes, like a foam cannon working across a panel */
+  const path = t => { const pass = Math.min(2, Math.floor(t * 3)), u = t * 3 - pass, y = H * (.18 + pass * .3), x = pass % 2 ? W * (1.02 - u * 1.04) : W * (-.02 + u * 1.04); return [x, y + Math.sin(u * 9) * 18]; };
+  const SRC = [W * .92, -60];
+  const colSpeed = Array.from({ length: Math.ceil(W / 34) + 1 }, () => .55 + Math.random() * .9);
+  const blobs = [], mist = [];
+  let last = 0; const t0 = performance.now();
+
+  let emitted = 0; const STEPS = 84;
+  const emit = (now, t) => {
+    const [nx, ny] = path(t), count = mobile ? 12 : 20;
+    for (let i = 0; i < count; i++) {
+      const tx = nx + (Math.random() - .5) * 240 * scale, ty = ny + (Math.random() - .5) * 200 * scale;
+      blobs.push({ sx: SRC[0], sy: SRC[1], x: tx, y: ty, r: (22 + Math.random() * 46) * scale, born: now, fly: 90 + Math.random() * 90,
+        spr: SPR[Math.random() < .14 ? 2 : (Math.random() < .5 ? 0 : 1)], rot: Math.random() * 6.28,
+        drip: DRIP0 + Math.random() * 450 + (1 - ty / H) * 250, vy: 0, dy: 0, sp: colSpeed[Math.max(0, Math.min(colSpeed.length - 1, Math.floor(tx / 34)))], streak: Math.random() < .12 });
+    }
+    for (let i = 0; i < 6; i++) mist.push({ x: SRC[0], y: SRC[1], tx: nx + (Math.random() - .5) * 320, ty: ny + (Math.random() - .5) * 260, born: now, life: 260 + Math.random() * 200 });
+  };
+
+  const frame = now => {
+    const el = now - t0, dt = Math.min(40, now - (last || now)); last = now;
+    const due = Math.min(STEPS, Math.floor(el / SPRAY * STEPS));
+    while (emitted < due) { emitted++; emit(now - (due - emitted) * (SPRAY / STEPS) * 0, emitted / STEPS); }
+    g.clearRect(0, 0, W, H);
+    /* mist: fine droplets streaking from the cannon */
+    g.fillStyle = "rgba(255,255,255,.7)";
+    for (let i = mist.length - 1; i >= 0; i--) {
+      const m = mist[i], u = (now - m.born) / m.life; if (u >= 1) { mist.splice(i, 1); continue; }
+      const x = m.x + (m.tx - m.x) * u, y = m.y + (m.ty - m.y) * u; g.globalAlpha = 1 - u; g.fillRect(x, y, 2.2, 2.2);
+    }
+    let alive = 0;
+    for (const b of blobs) {
+      const age = now - b.born, flyU = Math.min(1, age / b.fly);
+      let x = b.sx + (b.x - b.sx) * flyU, y = b.sy + (b.y - b.sy) * flyU, r = b.r * (.35 + .65 * flyU), a = 1, stretch = 1;
+      if (flyU >= 1) {
+        const settle = Math.min(1, (age - b.fly) / 220); r = b.r * (1 + .12 * settle);
+        if (el > b.drip) {
+          b.vy += 1.15 * b.sp * dt / 16; b.dy += b.vy * dt / 16;
+          y = b.y + b.dy; stretch = 1 + Math.min(1.6, b.vy / 9);
+          a = Math.max(0, 1 - b.dy / (H * .55 + b.r));
+          if (b.streak && a > 0) { g.globalAlpha = a * .35; g.fillStyle = "#f4f6f8"; g.fillRect(x - r * .18, b.y, r * .36, b.dy); }
+        }
+      }
+      if (a <= 0.01 || y - r > H) continue;
+      alive++;
+      g.globalAlpha = a * (flyU < 1 ? .85 : .96);
+      g.save(); g.translate(x, y); g.rotate(b.rot); g.scale(1 / Math.sqrt(stretch), stretch);
+      g.drawImage(b.spr, -r, -r, r * 2, r * 2); g.restore();
+    }
+    g.globalAlpha = 1;
+    if (el < END && (alive || el < DRIP0)) requestAnimationFrame(frame);
+    else cv.remove();
+  };
+  requestAnimationFrame(frame);
+}
 
 /* ------------------------------------------------------------------ boot */
 initIntro(); initNav(); initHero(); initVan(); initClub(); initBooking(); initProducts(); initReels(); initGallery(); initMap(); initCheck(); initReveal(); initMbar();

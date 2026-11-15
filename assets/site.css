@@ -758,3 +758,16 @@ body.is-intro{overflow:hidden}
   .cal__grid button{height:42px}
 }
 @media (prefers-reduced-motion:reduce){.facts li{opacity:1;transform:none}}
+
+/* ================================================================ v15: hero foam + final CTA */
+.foam{position:absolute;left:0;top:0;width:100%;z-index:5;pointer-events:none}
+.final__btn{position:relative;overflow:hidden;isolation:isolate;white-space:nowrap;min-height:84px;padding:0 52px;gap:14px;border-radius:14px;background:var(--ink);color:#fff;font-size:clamp(18px,1.6vw,22px);letter-spacing:.06em;
+  box-shadow:0 0 0 2px #fff,0 0 22px 2px rgba(255,255,255,.55),0 0 60px 6px rgba(255,90,110,.55),0 8px 0 #000;animation:ctaGlow 2.4s ease-in-out infinite}
+.final__btn svg{width:22px;height:22px}
+.final__btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.28) 46%,rgba(255,59,82,.35) 52%,transparent 66%) -150% 0/220% 100% no-repeat;animation:ctaShine 3.2s ease-in-out infinite}
+.final__btn:hover{transform:translateY(-3px) scale(1.02);background:#151517}
+.final__btn:active{transform:translateY(4px);box-shadow:0 0 0 2px #fff,0 0 22px 2px rgba(255,255,255,.55),0 2px 0 #000}
+@keyframes ctaGlow{0%,100%{box-shadow:0 0 0 2px #fff,0 0 18px 1px rgba(255,255,255,.45),0 0 44px 4px rgba(255,90,110,.4),0 8px 0 #000}50%{box-shadow:0 0 0 2px #fff,0 0 30px 4px rgba(255,255,255,.75),0 0 80px 12px rgba(255,90,110,.7),0 8px 0 #000}}
+@keyframes ctaShine{0%,35%{background-position:-150% 0}100%{background-position:150% 0}}
+@media (max-width:760px){.final__btn{width:100%;min-height:72px;padding:0 20px}}
+@media (prefers-reduced-motion:reduce){.final__btn,.final__btn::after{animation:none}}
