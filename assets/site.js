@@ -440,7 +440,7 @@ function runFoam() {
   const SPR = [sprite(false), sprite(false), sprite(true)];
 
   /* timeline (ms) */
-  const SPRAY = 1900, HOLD = 250, DRIP0 = SPRAY + HOLD, END = SPRAY + HOLD + 1500;
+  const SPRAY = 1900, HOLD = 250, DRIP0 = SPRAY + HOLD, END = SPRAY + HOLD + 2600;
   /* only the copy block gets foamed: logo, headline, lede, buttons */
   const hb = hero.getBoundingClientRect(), cb = $(".hero__copy").getBoundingClientRect(), PAD = mobile ? 10 : 30;
   const RX = Math.max(0, cb.left - hb.left - PAD), RY = Math.max(0, cb.top - hb.top + (mobile ? 0 : 40)), RW = cb.width + PAD * 2, RH = Math.min(H - RY, cb.height - (mobile ? 0 : 80));
@@ -453,20 +453,59 @@ function runFoam() {
 
   let emitted = 0; const STEPS = 110;
   const emit = (now, t) => {
-    const [nx, ny] = path(t), count = mobile ? 9 : 14;
+    const [nx, ny] = path(t), count = mobile ? 8 : 12;
     for (let i = 0; i < count; i++) {
       const tx = Math.max(RX, Math.min(RX + RW, nx + (Math.random() - .5) * 200 * scale)), ty = Math.max(RY, Math.min(RY + RH, ny + (Math.random() - .5) * 170 * scale));
-      blobs.push({ sx: SRC[0], sy: SRC[1], x: tx, y: ty, r: (22 + Math.random() * 46) * scale, born: now, fly: 90 + Math.random() * 90,
+      blobs.push({ sx: SRC[0], sy: SRC[1], x: tx, y: ty, r: (18 + Math.random() * 34) * scale, born: now, fly: 90 + Math.random() * 90,
         spr: SPR[Math.random() < .14 ? 2 : (Math.random() < .5 ? 0 : 1)], rot: Math.random() * 6.28,
-        drip: DRIP0 + Math.random() * 220 + ((ty - RY) / RH) * 120, vy: 0, dy: 0, sp: colSpeed[Math.max(0, Math.min(colSpeed.length - 1, Math.floor(tx / 34)))], streak: Math.random() < .12 });
+        drip: DRIP0 + Math.random() * 220 + ((ty - RY) / RH) * 120, vy: 0, dy: 0, sp: colSpeed[Math.max(0, Math.min(colSpeed.length - 1, Math.floor(tx / 34)))], streak: Math.random() < .16 });
     }
     for (let i = 0; i < 6; i++) mist.push({ x: SRC[0], y: SRC[1], tx: nx + (Math.random() - .5) * 320, ty: ny + (Math.random() - .5) * 260, born: now, life: 260 + Math.random() * 200 });
   };
 
+  /* foam is drawn on its own layer, then laid over the hero at partial opacity,
+     so overlapping puffs never go solid and the copy stays readable behind it */
+  const L = document.createElement("canvas"); L.width = cv.width; L.height = cv.height;
+  const f = L.getContext("2d"); f.scale(dpr, dpr);
+  const runs = [];
   const frame = now => {
     const el = now - t0, dt = Math.min(40, now - (last || now)); last = now;
     const due = Math.min(STEPS, Math.floor(el / SPRAY * STEPS));
-    while (emitted < due) { emitted++; emit(now - (due - emitted) * (SPRAY / STEPS) * 0, emitted / STEPS); }
+    while (emitted < due) { emitted++; emit(now, emitted / STEPS); }
+    f.clearRect(0, 0, W, H);
+    let alive = 0;
+    for (const b of blobs) {
+      const age = now - b.born, flyU = Math.min(1, age / b.fly);
+      let x = b.sx + (b.x - b.sx) * flyU, y = b.sy + (b.y - b.sy) * flyU, r = b.r * (.35 + .65 * flyU), a = 1, stretch = 1;
+      if (flyU >= 1) {
+        r = b.r * (1 + .12 * Math.min(1, (age - b.fly) / 220));
+        if (el > b.drip) {
+          if (!b.run && b.streak) { b.run = 1; runs.push({ x: x + (Math.random() - .5) * r * .6, y0: y + r * .5, y: y + r * .5, v: .4 + Math.random() * .8, w: (2 + Math.random() * 3.2) * scale, born: now }); }
+          /* the sheet sags and slides: slow start, then a steady creep, thinning as it goes */
+          b.vy = Math.min(3.2 * b.sp, b.vy + .3 * b.sp * dt / 16); b.dy += b.vy * dt / 16;
+          y = b.y + b.dy; stretch = 1 + Math.min(.45, b.vy / 7);
+          a = Math.max(0, 1 - (el - b.drip) / (800 + 500 * b.sp)) * Math.max(0, 1 - b.dy / (RH * .7));
+        }
+      }
+      if (a <= 0.01 || y - r > H) continue;
+      alive++;
+      f.globalAlpha = a * (flyU < 1 ? .7 : 1);
+      f.save(); f.translate(x, y); f.rotate(b.rot); f.scale(1 / Math.sqrt(stretch), stretch);
+      f.drawImage(b.spr, -r, -r, r * 2, r * 2); f.restore();
+    }
+    /* rivulets: thin runs of foamy water racing down, with a bead at the tip */
+    for (const d of runs) {
+      const age = now - d.born, a = Math.max(0, 1 - age / 1500); if (!a) continue;
+      alive++;
+      d.v = Math.min(9, d.v + .16 * dt / 16); d.y += d.v * dt / 16;
+      const top = d.y0 + Math.max(0, d.y - d.y0 - 260);
+      const gr = f.createLinearGradient(0, top, 0, d.y);
+      gr.addColorStop(0, "rgba(240,244,248,0)"); gr.addColorStop(1, "rgba(246,248,250,.9)");
+      f.globalAlpha = a; f.strokeStyle = gr; f.lineWidth = d.w; f.lineCap = "round";
+      f.beginPath(); f.moveTo(d.x, top); f.lineTo(d.x + Math.sin(d.y * .03) * 1.5, d.y); f.stroke();
+      f.fillStyle = "rgba(250,251,252,.95)"; f.beginPath(); f.ellipse(d.x, d.y + d.w * .4, d.w * .9, d.w * 1.3, 0, 0, 7); f.fill();
+    }
+    f.globalAlpha = 1;
     g.clearRect(0, 0, W, H);
     /* mist: fine droplets streaking from the cannon */
     g.fillStyle = "rgba(255,255,255,.7)";
@@ -474,26 +513,7 @@ function runFoam() {
       const m = mist[i], u = (now - m.born) / m.life; if (u >= 1) { mist.splice(i, 1); continue; }
       const x = m.x + (m.tx - m.x) * u, y = m.y + (m.ty - m.y) * u; g.globalAlpha = 1 - u; g.fillRect(x, y, 2.2, 2.2);
     }
-    let alive = 0;
-    for (const b of blobs) {
-      const age = now - b.born, flyU = Math.min(1, age / b.fly);
-      let x = b.sx + (b.x - b.sx) * flyU, y = b.sy + (b.y - b.sy) * flyU, r = b.r * (.35 + .65 * flyU), a = 1, stretch = 1;
-      if (flyU >= 1) {
-        const settle = Math.min(1, (age - b.fly) / 220); r = b.r * (1 + .12 * settle);
-        if (el > b.drip) {
-          b.vy += 2.4 * b.sp * dt / 16; b.dy += b.vy * dt / 16;
-          y = b.y + b.dy; stretch = 1 + Math.min(1.6, b.vy / 9);
-          a = Math.max(0, 1 - b.dy / (RH * .5 + b.r));
-          if (b.streak && a > 0) { g.globalAlpha = a * .35; g.fillStyle = "#f4f6f8"; g.fillRect(x - r * .18, b.y, r * .36, b.dy); }
-        }
-      }
-      if (a <= 0.01 || y - r > H) continue;
-      alive++;
-      g.globalAlpha = a * (flyU < 1 ? .85 : .96);
-      g.save(); g.translate(x, y); g.rotate(b.rot); g.scale(1 / Math.sqrt(stretch), stretch);
-      g.drawImage(b.spr, -r, -r, r * 2, r * 2); g.restore();
-    }
-    g.globalAlpha = 1;
+    g.globalAlpha = .62; g.drawImage(L, 0, 0, W, H); g.globalAlpha = 1;
     if (el < END && (alive || el < DRIP0)) requestAnimationFrame(frame);
     else cv.remove();
   };
