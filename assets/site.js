@@ -39,7 +39,7 @@ const PKGS = [
 ];
 const PLANS = [
   { id: "monthly", n: "Monthly", card: "silver", cardName: "Silver", no: "4058  6160  0058  0112", f: "Weekend trucks & garage cars", per: [109, 135, 219], visits: 1, save: "",
-    li: ["1 visit a month", "Full Signature Wash", "Full interior vacuum & mats", "Plastics cleaned & dressed", "Glass inside & out"], plus: true },
+    li: ["Full Signature Wash", "Full interior vacuum & mats", "Plastics cleaned & dressed", "Glass inside & out"], plus: true },
   { id: "weekly", n: "Weekly", card: "red", cardName: "Red", no: "4058  6160  0058  0001", f: "Daily drivers & work trucks", hi: "Best of the best", per: [69, 89, 159], visits: 4, save: "Save 19% per wash",
     li: ["4 Signature Washes a month", "Wheels, wells & tires every visit", "Spot-free rinse & blow-dry", "Ceramic topper every visit", "Interior vacuum & wipe"] },
   { id: "biweekly", n: "Every 2 weeks", card: "black", cardName: "Black", no: "4058  6160  0058  0024", f: "Keeps a coating performing", per: [75, 97, 175], visits: 2, save: "Save 12% per wash",
@@ -178,8 +178,8 @@ function renderTiers() {
         <span class="tc__name"><small>Member</small>Your name here</span><span class="tc__plan"><small>Plan</small>${p.n}</span></div>
       <h3 class="tier__n">${p.n}</h3><p class="tier__f">${p.f}</p>
       <p class="tier__p"><b>${money(mo)}</b><span>/ month</span></p>
-      <p class="tier__per">${money(per)} per wash${p.save ? ` <span class="tier__save">${p.save}</span>` : ""}</p>
-      <ul>${p.li.map((l, j) => `<li class="${p.plus && j >= 2 ? "is-plus" : ""}">${CHECK}<span>${l}</span></li>`).join("")}</ul>
+      ${p.visits > 1 ? `<p class="tier__per">${money(per)} per wash${p.save ? ` <span class="tier__save">${p.save}</span>` : ""}</p>` : `<p class="tier__per">1 visit a month</p>`}
+      <ul>${p.li.map((l, j) => `<li class="${p.plus && j >= 1 ? "is-plus" : ""}">${CHECK}<span>${l}</span></li>`).join("")}</ul>
       <button type="button" class="btn ${p.hi ? "btn--white" : "btn--ghost"} btn--block btn--lg" data-book="${p.id}">Join the ${p.n.toLowerCase()} plan</button></article>`;
   }).join("");
 }
@@ -279,7 +279,7 @@ function initProducts() {
       <video muted playsinline loop preload="none" poster="assets/img/${clip}.jpg" data-src="assets/v/${clip}.mp4"></video>
       <span class="pclip__brand">${brand}</span><div class="pclip__body"><b>${name}</b><span>${use}</span></div></article>`).join("")
     + `<article class="pclip pclip--shelf rv"><img src="assets/img/shelf.jpg" alt="Shine Supply gallons lined up in front of the Jasperson's van" loading="lazy">
-      <span class="pclip__brand">The lineup</span><div class="pclip__body"><b>On the van, every job</b><span>Gallons, not bottles.</span></div></article>`;
+      <span class="pclip__brand">The lineup</span><div class="pclip__body"><b>Stocked on the van</b><span>Bought by the gallon, not the bottle.</span></div></article>`;
   $$(".pclips video, .feat video").forEach(v => lazyIO.observe(v));
 }
 
