@@ -118,7 +118,7 @@ const lazyIO = new IntersectionObserver(es => es.forEach(en => {
 /* ------------------------------------------------------------------ intro, nav, hero */
 function initIntro() {
   const intro = $(".intro"), root = document.documentElement;
-  const finish = () => { document.body.classList.remove("is-intro"); document.body.classList.add("neon-on"); setTimeout(runFoam, 120); };
+  const finish = () => { document.body.classList.remove("is-intro"); document.body.classList.add("neon-on"); startHero(); };
   if (!intro || root.classList.contains("no-intro") || REDUCED) { intro && intro.remove(); setTimeout(finish, REDUCED ? 0 : 250); return; }
   document.body.classList.add("is-intro");
   const out = () => { if (intro.classList.contains("is-out")) return; intro.classList.add("is-out"); try { sessionStorage.setItem("jd-intro", "1"); } catch (_) {} setTimeout(finish, 450); setTimeout(() => intro.remove(), 900); };
@@ -135,7 +135,30 @@ function initNav() {
   };
   addEventListener("scroll", () => { cancelAnimationFrame(spy._r); spy._r = requestAnimationFrame(spy); }, { passive: true }); spy();
 }
-function initHero() { const v = $(".hero__video video"); if (REDUCED) v.pause(); }
+function initHero() { const v = $(".hero__video video"); v.pause(); try { v.currentTime = 0; } catch (_) {} }
+/* the reel opens on Logan's foam cannon spraying left; once the stream reaches the edge of the video,
+   the foam overlay picks it up and mists onto the copy */
+function startHero() {
+  const v = $(".hero__video video");
+  try { v.currentTime = 0; } catch (_) {}
+  countUp();
+  if (REDUCED) return;
+  v.play().catch(() => {});
+  let fired = false;
+  const go = () => { if (fired) return; fired = true; runFoam(); };
+  const watch = () => { if (fired) return; if (v.currentTime >= .12) go(); else requestAnimationFrame(watch); };
+  requestAnimationFrame(watch);
+  setTimeout(go, 1400); /* if the video stalls, still run the foam */
+}
+function countUp() {
+  const el = $("[data-count]"); if (!el) return;
+  const to = +el.dataset.count, fmt = n => n.toLocaleString("en-US");
+  if (REDUCED) { el.textContent = fmt(to); return; }
+  const t0 = performance.now(), dur = 1700;
+  el.textContent = "0";
+  const tick = now => { const u = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - u, 3); el.textContent = fmt(Math.round(to * e)); if (u < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}
 
 /* ------------------------------------------------------------------ packages on the van doors */
 function doorCard(p) {
@@ -441,13 +464,13 @@ function runFoam() {
   const SPR = [sprite(false), sprite(false), sprite(true)];
 
   /* timeline (ms) */
-  const SPRAY = 1900, HOLD = 250, DRIP0 = SPRAY + HOLD, END = SPRAY + 4200;
+  const SPRAY = 2100, HOLD = 250, DRIP0 = SPRAY + HOLD, END = SPRAY + 4200;
   /* only the copy block gets foamed: logo, headline, lede, buttons */
   const hb = hero.getBoundingClientRect(), cb = $(".hero__copy").getBoundingClientRect(), PAD = mobile ? 10 : 30;
   const RX = Math.max(0, cb.left - hb.left - PAD), RY = Math.max(0, cb.top - hb.top + (mobile ? 0 : 40)), RW = cb.width + PAD * 2, RH = Math.min(H - RY, cb.height - (mobile ? 0 : 80));
   /* the spray sweeps in three diagonal passes, like a foam cannon working across a panel */
   const path = t => { const pass = Math.min(2, Math.floor(t * 3)), u = t * 3 - pass, y = RY + RH * (.18 + pass * .32), x = pass % 2 ? RX + RW * (1 - u) : RX + RW * u; return [x, y + Math.sin(u * 9) * 14]; };
-  const SRC = [RX + RW + 160, RY - 120];
+  const SRC = mobile ? [W + 20, H * .42] : [Math.max(RX + RW - 10, W * .47), H * .44];
   const colSpeed = Array.from({ length: Math.ceil(W / 34) + 1 }, () => .55 + Math.random() * .9);
   const blobs = [], mist = [];
   let last = 0; const t0 = performance.now();
@@ -457,11 +480,11 @@ function runFoam() {
     const [nx, ny] = path(t), count = mobile ? 8 : 12;
     for (let i = 0; i < count; i++) {
       const tx = Math.max(RX, Math.min(RX + RW, nx + (Math.random() - .5) * 200 * scale)), ty = Math.max(RY, Math.min(RY + RH, ny + (Math.random() - .5) * 170 * scale));
-      blobs.push({ sx: SRC[0], sy: SRC[1], x: tx, y: ty, r: (18 + Math.random() * 34) * scale, born: now, fly: 90 + Math.random() * 90,
+      blobs.push({ sx: SRC[0], sy: SRC[1] + (ty - SRC[1]) * .25 + (Math.random() - .5) * 40, x: tx, y: ty, r: (18 + Math.random() * 34) * scale, born: now, fly: 220 + Math.random() * 200 * (Math.abs(SRC[0] - tx) / W + .3),
         spr: SPR[Math.random() < .14 ? 2 : (Math.random() < .5 ? 0 : 1)], rot: Math.random() * 6.28,
         drip: t * SPRAY + 650 + Math.random() * 550, vy: 0, dy: 0, sp: colSpeed[Math.max(0, Math.min(colSpeed.length - 1, Math.floor(tx / 34)))], streak: Math.random() < .16 });
     }
-    for (let i = 0; i < 6; i++) mist.push({ x: SRC[0], y: SRC[1], tx: nx + (Math.random() - .5) * 320, ty: ny + (Math.random() - .5) * 260, born: now, life: 260 + Math.random() * 200 });
+    for (let i = 0; i < 16; i++) mist.push({ s: .8 + Math.random() * 2.2, x: SRC[0], y: SRC[1] + (Math.random() - .5) * 30, tx: nx + (Math.random() - .5) * 360, ty: ny + (Math.random() - .5) * 280, born: now, life: 260 + Math.random() * 200 });
   };
 
   /* foam is drawn on its own layer, then laid over the hero at partial opacity,
@@ -477,7 +500,8 @@ function runFoam() {
     let alive = 0;
     for (const b of blobs) {
       const age = now - b.born, flyU = Math.min(1, age / b.fly);
-      let x = b.sx + (b.x - b.sx) * flyU, y = b.sy + (b.y - b.sy) * flyU, r = b.r * (.35 + .65 * flyU), a = 1, stretch = 1;
+      let x = b.sx + (b.x - b.sx) * flyU, y = b.sy + (b.y - b.sy) * flyU, r = b.r * (.12 + .88 * flyU * flyU), a = 1, stretch = 1;
+      y -= Math.sin(flyU * Math.PI) * 22;
       if (flyU >= 1) {
         r = b.r * (1 + .12 * Math.min(1, (age - b.fly) / 220));
         if (el > b.drip) {
@@ -512,7 +536,7 @@ function runFoam() {
     g.fillStyle = "rgba(255,255,255,.7)";
     for (let i = mist.length - 1; i >= 0; i--) {
       const m = mist[i], u = (now - m.born) / m.life; if (u >= 1) { mist.splice(i, 1); continue; }
-      const x = m.x + (m.tx - m.x) * u, y = m.y + (m.ty - m.y) * u; g.globalAlpha = 1 - u; g.fillRect(x, y, 2.2, 2.2);
+      const x = m.x + (m.tx - m.x) * u, y = m.y + (m.ty - m.y) * u; g.globalAlpha = (1 - u) * .85; g.fillRect(x, y - Math.sin(u * Math.PI) * 18, m.s, m.s);
     }
     g.globalAlpha = .62; g.drawImage(L, 0, 0, W, H); g.globalAlpha = 1;
     if (el < END && (alive || el < DRIP0)) requestAnimationFrame(frame);
