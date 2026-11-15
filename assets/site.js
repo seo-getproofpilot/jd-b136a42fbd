@@ -136,19 +136,13 @@ function initNav() {
   addEventListener("scroll", () => { cancelAnimationFrame(spy._r); spy._r = requestAnimationFrame(spy); }, { passive: true }); spy();
 }
 function initHero() { const v = $(".hero__video video"); v.pause(); try { v.currentTime = 0; } catch (_) {} }
-/* the reel opens on Logan's foam cannon spraying left; once the stream reaches the edge of the video,
-   the foam overlay picks it up and mists onto the copy */
+/* the reel waits behind the logo intro, then starts from the first frame */
 function startHero() {
   const v = $(".hero__video video");
   try { v.currentTime = 0; } catch (_) {}
   countUp();
   if (REDUCED) return;
   v.play().catch(() => {});
-  let fired = false;
-  const go = () => { if (fired) return; fired = true; runFoam(); };
-  const watch = () => { if (fired) return; if (v.currentTime >= .12) go(); else requestAnimationFrame(watch); };
-  requestAnimationFrame(watch);
-  setTimeout(go, 1400); /* if the video stalls, still run the foam */
 }
 function countUp() {
   const el = $("[data-count]"); if (!el) return;
@@ -434,116 +428,6 @@ function initReveal() {
 }
 function initMbar() { const bar = $(".mbar"); const tog = () => bar.classList.toggle("is-on", scrollY > innerHeight * .7); addEventListener("scroll", tog, { passive: true }); }
 
-
-/* ------------------------------------------------------------------ hero foam: sprayed on, then drips off */
-function runFoam() {
-  const hero = $(".hero"); if (!hero || REDUCED) return;
-  const cv = document.createElement("canvas"); cv.className = "foam"; cv.setAttribute("aria-hidden", "true");
-  hero.appendChild(cv);
-  const dpr = Math.min(devicePixelRatio || 1, 2), W = hero.clientWidth, H = Math.min(hero.clientHeight, innerHeight * 1.05);
-  cv.width = W * dpr; cv.height = H * dpr; cv.style.height = H + "px";
-  const g = cv.getContext("2d"); g.scale(dpr, dpr);
-  const mobile = W < 760, scale = mobile ? .7 : 1;
-
-  /* one foam-blob sprite: soft white puff with a few bubble rims */
-  const sprite = (tint) => {
-    const s = document.createElement("canvas"), n = 128; s.width = s.height = n; const c = s.getContext("2d");
-    const grd = c.createRadialGradient(n * .45, n * .42, n * .05, n / 2, n / 2, n / 2);
-    grd.addColorStop(0, tint ? "rgba(255,236,240,1)" : "rgba(255,255,255,1)");
-    grd.addColorStop(.62, tint ? "rgba(255,214,222,.95)" : "rgba(246,248,250,.95)");
-    grd.addColorStop(1, "rgba(235,238,242,0)");
-    c.fillStyle = grd; c.beginPath(); c.arc(n / 2, n / 2, n / 2, 0, 7); c.fill();
-    for (let i = 0; i < 14; i++) {
-      const a = Math.random() * 7, r = Math.random() * n * .3, br = 3 + Math.random() * 9;
-      c.strokeStyle = "rgba(190,198,208,.55)"; c.lineWidth = 1.2;
-      c.beginPath(); c.arc(n / 2 + Math.cos(a) * r, n / 2 + Math.sin(a) * r, br, 0, 7); c.stroke();
-      c.fillStyle = "rgba(255,255,255,.9)"; c.beginPath(); c.arc(n / 2 + Math.cos(a) * r - br * .35, n / 2 + Math.sin(a) * r - br * .35, br * .3, 0, 7); c.fill();
-    }
-    return s;
-  };
-  const SPR = [sprite(false), sprite(false), sprite(true)];
-
-  /* timeline (ms) */
-  const SPRAY = 2100, HOLD = 250, DRIP0 = SPRAY + HOLD, END = SPRAY + 4200;
-  /* only the copy block gets foamed: logo, headline, lede, buttons */
-  const hb = hero.getBoundingClientRect(), cb = $(".hero__copy").getBoundingClientRect(), PAD = mobile ? 10 : 30;
-  const RX = Math.max(0, cb.left - hb.left - PAD), RY = Math.max(0, cb.top - hb.top + (mobile ? 0 : 40)), RW = cb.width + PAD * 2, RH = Math.min(H - RY, cb.height - (mobile ? 0 : 80));
-  /* the spray sweeps in three diagonal passes, like a foam cannon working across a panel */
-  const path = t => { const pass = Math.min(2, Math.floor(t * 3)), u = t * 3 - pass, y = RY + RH * (.18 + pass * .32), x = pass % 2 ? RX + RW * (1 - u) : RX + RW * u; return [x, y + Math.sin(u * 9) * 14]; };
-  const SRC = mobile ? [W + 20, H * .42] : [Math.max(RX + RW - 10, W * .47), H * .44];
-  const colSpeed = Array.from({ length: Math.ceil(W / 34) + 1 }, () => .55 + Math.random() * .9);
-  const blobs = [], mist = [];
-  let last = 0; const t0 = performance.now();
-
-  let emitted = 0; const STEPS = 110;
-  const emit = (now, t) => {
-    const [nx, ny] = path(t), count = mobile ? 8 : 12;
-    for (let i = 0; i < count; i++) {
-      const tx = Math.max(RX, Math.min(RX + RW, nx + (Math.random() - .5) * 200 * scale)), ty = Math.max(RY, Math.min(RY + RH, ny + (Math.random() - .5) * 170 * scale));
-      blobs.push({ sx: SRC[0], sy: SRC[1] + (ty - SRC[1]) * .25 + (Math.random() - .5) * 40, x: tx, y: ty, r: (18 + Math.random() * 34) * scale, born: now, fly: 220 + Math.random() * 200 * (Math.abs(SRC[0] - tx) / W + .3),
-        spr: SPR[Math.random() < .14 ? 2 : (Math.random() < .5 ? 0 : 1)], rot: Math.random() * 6.28,
-        drip: t * SPRAY + 650 + Math.random() * 550, vy: 0, dy: 0, sp: colSpeed[Math.max(0, Math.min(colSpeed.length - 1, Math.floor(tx / 34)))], streak: Math.random() < .16 });
-    }
-    for (let i = 0; i < 16; i++) mist.push({ s: .8 + Math.random() * 2.2, x: SRC[0], y: SRC[1] + (Math.random() - .5) * 30, tx: nx + (Math.random() - .5) * 360, ty: ny + (Math.random() - .5) * 280, born: now, life: 260 + Math.random() * 200 });
-  };
-
-  /* foam is drawn on its own layer, then laid over the hero at partial opacity,
-     so overlapping puffs never go solid and the copy stays readable behind it */
-  const L = document.createElement("canvas"); L.width = cv.width; L.height = cv.height;
-  const f = L.getContext("2d"); f.scale(dpr, dpr);
-  const runs = [];
-  const frame = now => {
-    const el = now - t0, dt = Math.min(40, now - (last || now)); last = now;
-    const due = Math.min(STEPS, Math.floor(el / SPRAY * STEPS));
-    while (emitted < due) { emitted++; emit(now, emitted / STEPS); }
-    f.clearRect(0, 0, W, H);
-    let alive = 0;
-    for (const b of blobs) {
-      const age = now - b.born, flyU = Math.min(1, age / b.fly);
-      let x = b.sx + (b.x - b.sx) * flyU, y = b.sy + (b.y - b.sy) * flyU, r = b.r * (.12 + .88 * flyU * flyU), a = 1, stretch = 1;
-      y -= Math.sin(flyU * Math.PI) * 22;
-      if (flyU >= 1) {
-        r = b.r * (1 + .12 * Math.min(1, (age - b.fly) / 220));
-        if (el > b.drip) {
-          if (!b.run && b.streak) { b.run = 1; runs.push({ x: x + (Math.random() - .5) * r * .6, y0: y + r * .5, y: y + r * .5, v: .4 + Math.random() * .8, w: (2 + Math.random() * 3.2) * scale, born: now }); }
-          /* the sheet sags and slides: slow start, then a steady creep, thinning as it goes */
-          b.vy = Math.min(2.6 * b.sp, b.vy + .16 * b.sp * dt / 16); b.dy += b.vy * dt / 16;
-          y = b.y + b.dy; stretch = 1 + Math.min(.45, b.vy / 7);
-          a = Math.max(0, 1 - (el - b.drip) / (1300 + 500 * b.sp)) * Math.max(0, 1 - b.dy / (RH * .75));
-        }
-      }
-      if (a <= 0.01 || y - r > H) continue;
-      alive++;
-      f.globalAlpha = a * (flyU < 1 ? .7 : 1);
-      f.save(); f.translate(x, y); f.rotate(b.rot); f.scale(1 / Math.sqrt(stretch), stretch);
-      f.drawImage(b.spr, -r, -r, r * 2, r * 2); f.restore();
-    }
-    /* rivulets: thin runs of foamy water racing down, with a bead at the tip */
-    for (const d of runs) {
-      const age = now - d.born, a = Math.max(0, 1 - age / 1500); if (!a) continue;
-      alive++;
-      d.v = Math.min(9, d.v + .16 * dt / 16); d.y += d.v * dt / 16;
-      const top = d.y0 + Math.max(0, d.y - d.y0 - 260);
-      const gr = f.createLinearGradient(0, top, 0, d.y);
-      gr.addColorStop(0, "rgba(240,244,248,0)"); gr.addColorStop(1, "rgba(246,248,250,.9)");
-      f.globalAlpha = a; f.strokeStyle = gr; f.lineWidth = d.w; f.lineCap = "round";
-      f.beginPath(); f.moveTo(d.x, top); f.lineTo(d.x + Math.sin(d.y * .03) * 1.5, d.y); f.stroke();
-      f.fillStyle = "rgba(250,251,252,.95)"; f.beginPath(); f.ellipse(d.x, d.y + d.w * .4, d.w * .9, d.w * 1.3, 0, 0, 7); f.fill();
-    }
-    f.globalAlpha = 1;
-    g.clearRect(0, 0, W, H);
-    /* mist: fine droplets streaking from the cannon */
-    g.fillStyle = "rgba(255,255,255,.7)";
-    for (let i = mist.length - 1; i >= 0; i--) {
-      const m = mist[i], u = (now - m.born) / m.life; if (u >= 1) { mist.splice(i, 1); continue; }
-      const x = m.x + (m.tx - m.x) * u, y = m.y + (m.ty - m.y) * u; g.globalAlpha = (1 - u) * .85; g.fillRect(x, y - Math.sin(u * Math.PI) * 18, m.s, m.s);
-    }
-    g.globalAlpha = .62; g.drawImage(L, 0, 0, W, H); g.globalAlpha = 1;
-    if (el < END && (alive || el < DRIP0)) requestAnimationFrame(frame);
-    else cv.remove();
-  };
-  requestAnimationFrame(frame);
-}
 
 /* ------------------------------------------------------------------ boot */
 initIntro(); initNav(); initHero(); initVan(); initClub(); initBooking(); initProducts(); initReels(); initGallery(); initMap(); initCheck(); initReveal(); initMbar();

@@ -760,7 +760,6 @@ body.is-intro{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.facts li{opacity:1;transform:none}}
 
 /* ================================================================ v15: hero foam + final CTA */
-.foam{position:absolute;left:0;top:0;width:100%;z-index:5;pointer-events:none}
 .final__btn{position:relative;overflow:hidden;isolation:isolate;white-space:nowrap;min-height:84px;padding:0 52px;gap:14px;border-radius:14px;background:var(--ink);color:#fff;font-size:clamp(18px,1.6vw,22px);letter-spacing:.06em;
   box-shadow:0 0 0 2px #fff,0 0 22px 2px rgba(255,255,255,.55),0 0 60px 6px rgba(255,90,110,.55),0 8px 0 #000;animation:ctaGlow 2.4s ease-in-out infinite}
 .final__btn svg{width:22px;height:22px}
@@ -820,3 +819,6 @@ body.is-intro{overflow:hidden}
 .areas__panel{margin-left:clamp(24px,14vw,300px);background:rgba(14,14,16,.9);box-shadow:0 40px 80px -30px #000,0 0 0 1px rgba(255,59,82,.25)}
 .areas::after{background:linear-gradient(90deg,rgba(11,11,12,.6) 0%,rgba(11,11,12,.25) 22%,rgba(11,11,12,0) 40%),linear-gradient(180deg,var(--ink) 0%,rgba(11,11,12,0) 9%,rgba(11,11,12,0) 91%,var(--ink) 100%)}
 @media (max-width:760px){.areas__panel{margin:0}}
+
+/* v29: the count-up number matches the other hero facts */
+.hero__facts b [data-count]{font:inherit;color:inherit;display:inline}
